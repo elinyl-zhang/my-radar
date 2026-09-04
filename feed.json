@@ -1,173 +1,167 @@
 {
+  "$schema": "radar-daily-feed-v2",
   "date": "2026-09-04",
-  "greeting": "Five signals at the edge of your practice today — from collaborators that aren't quite tools, to memory that isn't quite yours. Plus: Studio Dumbar's visual rigor, Johanna Drucker's critical eye on the digital page, the Rhizome archive's fragile persistence, and a creative-coding toolkit that runs in your browser. Your radar is live.",
-  "sections": [
+  "territories": [
+    {"name": "AI SYSTEMS", "x": 716, "y": 180},
+    {"name": "HUMAN COGNITION", "x": 248, "y": 200},
+    {"name": "CULTURAL DATA", "x": 280, "y": 452},
+    {"name": "DIGITAL HUMANITIES", "x": 712, "y": 462}
+  ],
+  "signals": [
     {
-      "id": "world",
-      "label": "WORLD",
-      "color": "#993556",
-      "question": "What's shifting in the landscape you work inside?",
-      "items": [
-        {
-          "headline": "AI Agents Are Becoming Collaborators, Not Tools",
-          "one_liner": "A new ACM CHI 2026 paper argues that the dominant metaphor for AI is shifting from 'tool' to 'collaborator', with real implications for agency, accountability, and design.",
-          "why_matters": "If AI agents are collaborators, then the design of human-AI workflows changes fundamentally — from command-and-control to negotiation, from delegation to co-creation. This affects every discipline that relies on AI-assisted work.",
-          "why_you": "You work at the intersection of digital humanities and creative practice. If your tools become collaborators, your authorship model, your citation practices, and your creative process all get re-examined.",
-          "source": {
-            "name": "ACM CHI 2026",
-            "url": "https://dl.acm.org/doi/10.1145/3772363.3778744"
-          },
-          "date": "2026-08-28"
-        },
-        {
-          "headline": "Who Owns Cultural Data in the Age of AI?",
-          "one_liner": "Europeana's new impulse paper asks who controls the cultural heritage data that AI models are trained on — and what governance structures are needed.",
-          "why_matters": "Cultural heritage institutions are the source data for generative AI trained on human culture. Who sets the terms of that extraction shapes what AI can know and who gets compensated.",
-          "why_you": "If you work with digital cultural heritage, this paper directly addresses the political economy of the data you already use — and the systems being built on top of it without your consent.",
-          "source": {
-            "name": "Europeana",
-            "url": "https://pro.europeana.eu/post/discover-our-new-impulse-paper-publishing-cultural-heritage-data-in-the-age-of-ai"
-          },
-          "date": "2026-08-20"
-        },
-        {
-          "headline": "Your First DH Publication Has a Deadline: October 1",
-          "one_liner": "DH Now is accepting submissions for its 2026 cycle — deadline October 1. A concrete next step for anyone in digital humanities with work to share.",
-          "why_matters": "Publication venues shape fields. DH Now is one of the few open, community-driven outlets for digital humanities work, and its call is a chance to move from project to public record.",
-          "why_you": "If you have DH work — a tool, a dataset, a method — sitting in a repo or a draft folder, this is the deadline that forces it into the world.",
-          "source": {
-            "name": "DH Now",
-            "url": "https://digitalhumanitiesnow.org/2026/08/submissions/"
-          },
-          "date": "2026-09-01"
-        }
-      ]
+      "id": "s1",
+      "headline": "Agentic Automation — Rethinking Human Agency with Proactive AI",
+      "one_liner": "ACM CHI paper examines how workers keep control when collaborating with AI systems that act on their own",
+      "signal_type": "NOW",
+      "chain": "AI SYSTEMS → HUMAN COGNITION",
+      "why_you": "Directly hits your growth edge: moving from AI-tool-user to systems-understander. This paper models the exact tension you're navigating.",
+      "title": "Agentic Automation Experiences",
+      "source": "ACM CHI 2026",
+      "url": "https://dl.acm.org/doi/10.1145/3772363.3778732",
+      "date": "2026-09-01",
+      "summary": "Examines how proactive AI agents that initiate actions reshape worker agency. Proposes a framework for keeping humans in control during agentic collaboration.",
+      "why_it_matters": "As AI agents become proactive actors rather than passive tools, the question of who drives the workflow becomes central to HCI research.",
+      "why_you_should_care": "This is the exact boundary you're exploring: when does AI extend cognition vs. replace it? The framework here gives you vocabulary for your own thinking.",
+      "radar_score": 0.92,
+      "domains": ["AI SYSTEMS", "HUMAN COGNITION"],
+      "connections": [{"to_signal": "s2", "type": "complementary"}],
+      "suggested_action": "Read the framework section, then map it against your own AI tool usage patterns",
+      "landscape": {"domain": "AI SYSTEMS", "short": "Agentic Automation", "x": 695, "y": 135, "strength": "strong"}
     },
     {
-      "id": "think",
-      "label": "THINK",
-      "color": "#3B5998",
-      "question": "What idea deserves a slow walk today?",
-      "items": [
-        {
-          "question": "What happens to memory when your tools remember for you — and what happens when they stop?",
-          "concept": "Cognitive Offloading & Distributed Memory",
-          "explanation": "A Nature Humanities and Social Sciences Communications paper examines how digital tools that store, surface, and synthesize information change the relationship between remembering and knowing. When a tool remembers your reading history, your bookmarks, your search patterns — you delegate a cognitive function outward. But the infrastructure of that memory is fragile: platforms sunset, APIs break, formats rot. The question isn't just whether we remember less, but whether we've built systems whose remembering we can't survive without.",
-          "why_matters": "This reframes digital preservation from an archival problem to a cognitive one. If your intellectual practice depends on externalized memory, then the durability of that memory is the durability of your thinking.",
-          "connections_to_user": "Your daily radar itself is an act of cognitive offloading — it surfaces, connects, and remembers signals so you don't have to hold them all at once. The question this paper raises is: what's your fallback when the radar goes dark?",
-          "sources": [
-            {
-              "name": "Nature Humanities and Social Sciences Communications",
-              "url": "https://www.nature.com/articles/s41599-026-06621-5"
-            }
-          ]
-        },
-        {
-          "question": "Can Python be a humanities method — not just a utility?",
-          "concept": "Code as Hermeneutic Practice",
-          "explanation": "The Programming Historian's lesson on building GUIs for digital humanities projects is, on the surface, a tutorial. But underneath it raises a structural question: when humanists write interfaces, not just scripts, they're making interpretive claims about how knowledge should be encountered. The GUI is an argument. Python becomes not a tool you apply to text, but a medium through which you think about text — the way a print designer thinks through layout, or a composer thinks through orchestration.",
-          "why_matters": "The distinction between 'using code' and 'thinking in code' is the boundary between digital humanities as service and digital humanities as practice. This lesson sits right on that boundary.",
-          "connections_to_user": "If you're building tools or interfaces for humanities work, you're already making hermeneutic choices — even if no one calls them that. Naming that explicitly changes how you design.",
-          "sources": [
-            {
-              "name": "Programming Historian",
-              "url": "https://programminghistorian.org/en/lessons/creating-guis-in-python-for-digital-humanities-projects"
-            }
-          ]
-        }
-      ]
+      "id": "s2",
+      "headline": "AI Reshaping Human Skills and Thinking — APA Monitor",
+      "one_liner": "American Psychological Association reports on how cognitive offloading to AI changes human skill development",
+      "signal_type": "LEARN",
+      "chain": "HUMAN COGNITION → AI SYSTEMS",
+      "why_you": "Maps directly onto your open question about when AI extends vs. replaces cognition.",
+      "title": "How AI is Reshaping Human Skills and Thinking",
+      "source": "APA Monitor",
+      "url": "https://www.apa.org/monitor/2026/07-08/ai-job-skills-thinking",
+      "date": "2026-08-15",
+      "summary": "APA examines the cognitive offloading phenomenon: people increasingly delegate memory, calculation, and judgment to AI, freeing mental resources but potentially eroding skills.",
+      "why_it_matters": "The first large-scale professional psychology perspective on AI cognitive offloading — not just tech industry opinions.",
+      "why_you_should_care": "Gives you empirical grounding for the question your Radar already carries: the boundary between extension and replacement.",
+      "radar_score": 0.88,
+      "domains": ["HUMAN COGNITION", "AI SYSTEMS"],
+      "connections": [{"to_signal": "s1", "type": "complementary"}],
+      "suggested_action": "Compare APA's offloading framework with the ACM agency framework — do they agree?",
+      "landscape": {"domain": "HUMAN COGNITION", "short": "Cognitive Offloading", "x": 270, "y": 245, "strength": "strong"}
     },
     {
-      "id": "look",
-      "label": "LOOK",
-      "color": "#4A6741",
-      "question": "What visual work rewards a longer gaze today?",
-      "items": [
-        {
-          "subject": "Studio Dumbar",
-          "subtitle": "Dutch graphic design studio, Rotterdam",
-          "look_for": [
-            "Notice how typographic scale creates hierarchy without hierarchy — large forms that don't dominate, small forms that don't disappear.",
-            "Look at the interplay of photographic and geometric elements: where does the image stop and the system begin?",
-            "Watch for the use of color as structure, not decoration — color fields that divide space the way a grid would, but with more ambiguity."
-          ],
-          "image_url": "",
-          "visit_url": "https://studiodumbar.com",
-          "why_today": "Studio Dumbar's recent identity for the Rotterdam Philharmonic Orchestra reimagines how motion and classical form coexist — a live case study in designing for institutions that must be both historic and contemporary, a tension you navigate in your own work."
-        }
-      ]
+      "id": "s3",
+      "headline": "Trustworthy AI in Cultural Heritage — Nature Paper",
+      "one_liner": "Methodology for embedding explainability and bias-mitigation in CH AI systems, published in Heritage Science",
+      "signal_type": "LEARN",
+      "chain": "CULTURAL DATA → AI SYSTEMS",
+      "why_you": "Sits at your primary intersection: AI × cultural heritage. Methodology you could reference in your own work.",
+      "title": "Towards Trustworthy AI in Cultural Heritage",
+      "source": "Heritage Science (Nature)",
+      "url": "https://www.nature.com/articles/s40494-026-02403-z",
+      "date": "2026-08-28",
+      "summary": "Proposes a methodology for trustworthy AI in the cultural heritage sector, embedding explainability and bias-mitigation strategies directly into CH workflows.",
+      "why_it_matters": "First peer-reviewed methodology (Nature portfolio) specifically targeting AI trustworthiness in cultural heritage — not general AI ethics adapted to CH.",
+      "why_you_should_care": "This is publishable, citable research at your exact intersection. The methodology could become a reference framework for your own DH projects.",
+      "radar_score": 0.85,
+      "domains": ["CULTURAL DATA", "AI SYSTEMS"],
+      "connections": [{"to_signal": "s1", "type": "ecosystem"}],
+      "suggested_action": "Read the methodology section — could you apply this framework to a Venice cultural data project?",
+      "landscape": {"domain": "CULTURAL DATA", "short": "Trustworthy AI in CH", "x": 255, "y": 420, "strength": "normal"}
     },
     {
-      "id": "discover",
-      "label": "DISCOVER",
-      "color": "#6B4C7A",
-      "question": "Whose mind should you encounter today?",
-      "items": [
-        {
-          "person_name": "Johanna Drucker",
-          "roles": ["scholar", "critic", "book artist", "typographer"],
-          "description": "Johanna Drucker is the Breslauer Professor of Bibliographical Studies at UCLA and one of the most incisive thinkers on the materiality of the page — physical and digital. Her work spans artist's books, critical theory, digital humanities, and the history of writing. She has argued persistently that the graphical and material qualities of text are not decoration but content — that form carries meaning in ways that plain-text transcription erases.",
-          "why_this_person": "Drucker's critique of the 'flat' digital page — the assumption that content is independent of its graphical presentation — is becoming more urgent as AI-generated text floods every surface. If form is content, then AI that outputs plain text is not just incomplete; it's wrong about what text is.",
-          "interests_intersection": [
-            "Materiality of digital artifacts",
-            "Critical approaches to visualization",
-            "Interface as interpretive act",
-            "History of writing and typographic form",
-            "Artist's books as scholarship"
-          ],
-          "image_url": "",
-          "explore_url": "https://www.johannadrucker.com"
-        }
-      ]
+      "id": "s4",
+      "headline": "UNESCO Rights-Based Data Governance for Inclusive AI",
+      "one_liner": "Second cohort launching June 2026 for policymakers designing rights-based data governance frameworks",
+      "signal_type": "NOW",
+      "chain": "CULTURAL DATA → HUMAN COGNITION",
+      "why_you": "Governance frameworks shape what AI can do with cultural data — directly affects your DH work in Europe.",
+      "title": "Governments Advance Rights-Based Data Governance",
+      "source": "UNESCO",
+      "url": "https://www.unesco.org/en/articles/governments-advance-rights-based-data-governance-unlock-inclusive-ai-futures",
+      "date": "2026-08-20",
+      "summary": "UNESCO announces second cohort of rights-based data governance training for policymakers, expanding structured guidance for inclusive AI futures.",
+      "why_it_matters": "The governance layer determines what's legally possible for AI in cultural institutions — this shapes your entire career space.",
+      "why_you_should_care": "As someone working at the intersection of data science and cultural heritage in Europe, governance literacy is survival skill #1.",
+      "radar_score": 0.78,
+      "domains": ["CULTURAL DATA", "HUMAN COGNITION"],
+      "connections": [{"to_signal": "s3", "type": "ecosystem"}],
+      "suggested_action": "Bookmark this — when you start your DS thesis, governance frameworks will be essential context",
+      "landscape": {"domain": "CULTURAL DATA", "short": "UNESCO Data Governance", "x": 300, "y": 475, "strength": "normal"}
     },
     {
-      "id": "explore",
-      "label": "EXPLORE",
-      "color": "#B07333",
-      "question": "Where could one click take you today?",
-      "items": [
-        {
-          "question": "How do you preserve art that was made to be ephemeral — and what does 'preserving' it even mean?",
-          "start_here": {
-            "name": "Rhizome ArtBase",
-            "url": "https://artbase.rhizome.org"
-          },
-          "branches": [
-            {
-              "label": "Net Art & Browser-Based Work",
-              "hint": "Art that lives in the browser — what happens when the browser changes or disappears?"
-            },
-            {
-              "label": "Emulation vs. Documentation",
-              "hint": "Is a screenshot of a interactive work a preservation or an admission of loss?"
-            },
-            {
-              "label": "Webrecorder & Archiving Tools",
-              "hint": "Tools for high-fidelity web archiving — capture behavior, not just appearance"
-            },
-            {
-              "label": "Born-Digital Conservation Ethics",
-              "hint": "When does preserving a work become rewriting it? Where's the line?"
-            }
-          ],
-          "why_this_rabbit_hole": "Rhizome at the New Museum has been thinking about digital preservation since 1999 — before most institutions acknowledged that digital art existed. Their ArtBase is a living archive of net art, and their approach (emulation, documentation, and managed obsolescence) is relevant to anyone who makes things in code and wants them to survive. If you've ever wondered whether your web project will be accessible in ten years, this is where those questions have been taken seriously."
-        }
-      ]
-    },
-    {
-      "id": "make",
-      "label": "MAKE",
-      "color": "#1A1A1C",
-      "question": "What can you make with what's already in your browser?",
-      "items": [
-        {
-          "tool_name": "p5.js",
-          "what_it_does": "A JavaScript library for creative coding — sketches, generative art, interactive visualizations, and animations — that runs directly in the browser with no build step.",
-          "why_now": "p5.js 2.0 is in active development with improved WebGL, color management, and accessibility. The community is producing a wave of tutorials and examples that lower the entry cost further. If you've been meaning to start, the on-ramp has never been smoother.",
-          "try_suggestion": "Open the p5.js web editor at editor.p5js.org, paste this: function setup() { createCanvas(400, 400); } function draw() { background(20); noStroke(); for (let i = 0; i < 200; i++) { fill(random(255), random(100), random(200), 150); circle(random(width), random(height), random(5, 30)); } noLoop(); } — hit play. You just made generative art.",
-          "explore_url": "https://p5js.org"
-        }
-      ]
+      "id": "s5",
+      "headline": "DH Benelux 2026 Call for Papers — Narrative Analysis",
+      "one_liner": "CFP for DH Benelux 2026 examining affordances and limitations of digital tools for narrative analysis",
+      "signal_type": "OPPORTUNITY",
+      "chain": "DIGITAL HUMANITIES",
+      "why_you": "An actual CFP at your level — undergraduate DH research welcome, narrative analysis matches your interests.",
+      "title": "DH Benelux 2026 — Call for Papers",
+      "source": "DH Benelux",
+      "url": "https://2026.dhbenelux.org/call-for-papers-2026/",
+      "date": "2026-09-01",
+      "summary": "DH Benelux 2026 welcomes contributions examining digital tools and methodologies for narrative analysis. Open to various formats including short papers.",
+      "why_it_matters": "A real publication venue at the intersection of DH and computational narrative — exactly your territory.",
+      "why_you_should_care": "You're a first-year undergrad at a European university. Submitting to DH Benelux is ambitious but not impossible — and the deadline approach gives you a concrete goal.",
+      "radar_score": 0.82,
+      "domains": ["DIGITAL HUMANITIES"],
+      "connections": [{"to_signal": "s3", "type": "complementary"}],
+      "suggested_action": "Check submission format and deadline. Could a Venice cultural data narrative project fit?",
+      "landscape": {"domain": "DIGITAL HUMANITIES", "short": "DH Benelux CFP", "x": 680, "y": 510, "strength": "strong"}
     }
-  ]
+  ],
+  "pattern": {
+    "label": "PATTERN EMERGING",
+    "statement": "The question of AI agency is being answered simultaneously from two directions: HCI researchers are designing frameworks for human control, while psychologists are documenting what happens when that control erodes. The gap between these two literatures is where the real insight lives.",
+    "contributing": ["s1", "s2", "s3"]
+  },
+  "open_question": {
+    "label": "A QUESTION WORTH CARRYING",
+    "text": "If agentic AI is designed to be proactive and cognitive offloading erodes skills by default, what interaction model keeps AI useful without making human judgment optional?"
+  },
+  "editorial": {
+    "world": [
+      {"headline": "Zero UI and the End of Legacy Interfaces", "sub": "IEEE Computer Society reports 2026 HCI trends — AI agents replacing UI flows with intent understanding", "why": "Zero UI is the architectural shift behind agentic AI — understanding it gives you design vocabulary", "source_url": "https://www.computer.org/publications/tech-news/trends/hci-trends-2026", "source_name": "IEEE Computer Society"},
+      {"headline": "UNESCO Expands AI Data Governance Program", "sub": "Second cohort for rights-based governance training launching mid-2026", "why": "Governance literacy is survival skill for DS+DH work in Europe", "source_url": "https://www.unesco.org/en/articles/governments-advance-rights-based-data-governance-unlock-inclusive-ai-futures", "source_name": "UNESCO"},
+      {"headline": "APA Maps AI's Impact on Human Skill Development", "sub": "Cognitive offloading frees mental resources but risks eroding critical skills", "why": "Empirical backing for the extension-vs-replacement question you already carry", "source_url": "https://www.apa.org/monitor/2026/07-08/ai-job-skills-thinking", "source_name": "American Psychological Association"}
+    ],
+    "think": [
+      {"concept": "Agentic Boundaries", "question": "Where is the line between an AI that suggests and an AI that decides?", "explain": "The ACM framework treats proactive AI as a design choice, not inevitability. The question is where to draw the boundary — and who draws it.", "why": "This is the conceptual question beneath every AI tool you use. Answering it once, clearly, would sharpen every subsequent design decision.", "source_url": "https://dl.acm.org/doi/10.1145/3772363.3778732"},
+      {"concept": "Governance as Design Material", "question": "Can data governance frameworks be treated as creative constraints rather than compliance burdens?", "explain": "UNESCO's rights-based approach frames governance as enabling rather than restrictive. If DH researchers adopt this frame, governance becomes a design parameter.", "why": "Reframing governance from obstacle to material would change how you approach every DH project that touches cultural data.", "source_url": "https://www.unesco.org/en/articles/governments-advance-rights-based-data-governance-unlock-inclusive-ai-futures"}
+    ],
+    "look": {
+      "subject": "Zero UI — Designing for Intent, Not Screens",
+      "look_for": ["How interface elements disappear when AI understands intent", "The typography of invisible systems — metadata that only surfaces on demand", "The calm aesthetic of systems that don't need to show everything"],
+      "visit_url": "https://www.computer.org/publications/tech-news/trends/hci-trends-2026",
+      "visit_name": "IEEE HCI Trends 2026",
+      "image_url": "https://www.computer.org/wp-content/uploads/hci-trends-2026-hero.jpg"
+    },
+    "discover": {
+      "name": "Dr. William Mattingly",
+      "roles": ["Digital Humanities Educator", "Python for Humanities Author"],
+      "desc": "Created Python for Digital Humanities — free textbooks, video lessons, and full course teaching Python to humanists, sociologists, and researchers.",
+      "why": "His pedagogy bridges the exact gap you're navigating: computational thinking for non-CS minds. His approach could inform how you structure your own learning.",
+      "tags": ["Python", "Digital Humanities", "Pedagogy", "Open Education"],
+      "link_url": "https://pythonhumanities.com/",
+      "portrait_url": "https://pythonhumanities.com/wp-content/uploads/william-mattingly.jpg"
+    },
+    "explore": {
+      "question": "What happens when you apply trustworthy AI methodology to a real cultural heritage collection?",
+      "start_url": "https://www.nature.com/articles/s40494-026-02403-z",
+      "start_name": "Trustworthy AI in CH (Nature)",
+      "trail": [
+        {"title": "Read the Nature paper methodology section", "hint": "Focus on explainability requirements — how do they operationalize 'trustworthy'?"},
+        {"title": "Pick a Venice cultural collection (e.g., Venezia Musei Civici)", "hint": "What data exists? What AI tasks would make sense? What could go wrong?"},
+        {"title": "Map the methodology to the collection", "hint": "Where do bias risks appear? What needs explainability? Who are the stakeholders?"},
+        {"title": "Write a 1-page sketch: Trustworthy AI for [Collection]", "hint": "This could become a DH Benelux short paper or a course project"}
+      ],
+      "why": "Taking a methodology from paper to practice is the fastest way to move from knowledge consumer to knowledge builder."
+    },
+    "make": {
+      "tool": "Python for Digital Humanities (pythonhumanities.com)",
+      "does": "Free structured Python curriculum designed specifically for humanities researchers — stylometry, topic modeling, word embeddings",
+      "why": "Your growth edge is computational thinking. This curriculum teaches Python the way your mind works: concept-first, application-immediate.",
+      "try": "Start with the text analysis module — it connects directly to your narrative analysis interest and the DH Benelux CFP",
+      "link_url": "https://pythonhumanities.com/"
+    }
+  }
 }
