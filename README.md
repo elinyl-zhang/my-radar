@@ -1,6 +1,48 @@
-# AI-Radar — Personal Intelligence Radar
+# My Radar
 
-A daily editorial interface that detects, interprets, and cross-connects meaningful signals across interdisciplinary interests. Not a dashboard. Not a feed. A personal intellectual magazine.
+A personal intelligence system that curates the world around not just who you are, but who you are becoming.
+
+## A Different Model of Personalization
+
+Most personalized systems begin with a simple question:
+
+> What are you interested in?
+
+My Radar starts somewhere else:
+
+> What are you trying to become?
+
+Interests are relatively static. Intellectual development is not.
+
+The system models personalization across four evolving layers:
+
+```
+STABLE IDENTITY
+  Who are you intellectually?
+        ↓
+CURRENT CONTEXT
+  What are you navigating right now?
+        ↓
+ACTIVE CURIOSITY
+  What is currently pulling your attention?
+        ↓
+GROWTH EDGES
+  What are you trying to become?
+```
+
+This changes what the system recommends.
+
+A conventional recommender might show more of what you already like. My Radar looks for signals that can:
+
+- strengthen an emerging capability
+- connect previously separate fields
+- introduce unfamiliar perspectives
+- deepen an active curiosity
+- support a meaningful intellectual transition
+
+The goal is not simply personal relevance. It is personal evolution.
+
+**My Radar is personalized not around who I am, but around the distance between who I am and who I am becoming.**
 
 ## Six Editorial Windows
 
@@ -38,10 +80,6 @@ The UI reads JSON only — no AI API calls at runtime. Personalization happens a
 ## Running
 
 Open `index.html` directly in a browser. No server required.
-
-## Profile
-
-Built for a Data Science undergraduate at Ca' Foscari Venice, with growth edges in computational thinking, AI systems understanding, interaction design, knowledge building, and interdisciplinary research.
 
 ## License
 
