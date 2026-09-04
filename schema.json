@@ -1,0 +1,197 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "my-radar-v5-feed",
+  "title": "My Radar — Personal Intellectual Magazine Feed (v5)",
+  "description": "Daily feed schema for a six-section magazine: WORLD, THINK, LOOK, DISCOVER, EXPLORE, MAKE.",
+  "type": "object",
+  "required": ["date", "greeting", "sections"],
+  "properties": {
+    "date": {
+      "type": "string",
+      "format": "date",
+      "description": "ISO 8601 date for this issue (YYYY-MM-DD)"
+    },
+    "greeting": {
+      "type": "string",
+      "description": "A short, personal editorial greeting for the day's issue"
+    },
+    "sections": {
+      "type": "array",
+      "description": "The six daily sections, always in canonical order",
+      "minItems": 6,
+      "maxItems": 6,
+      "items": {
+        "$ref": "#/$defs/section"
+      }
+    }
+  },
+  "$defs": {
+    "color_map": {
+      "type": "object",
+      "description": "Canonical hex colors per section",
+      "properties": {
+        "world":    { "type": "string", "const": "#993556" },
+        "think":    { "type": "string", "const": "#3B5998" },
+        "look":     { "type": "string", "const": "#4A6741" },
+        "discover": { "type": "string", "const": "#6B4C7A" },
+        "explore":  { "type": "string", "const": "#B07333" },
+        "make":     { "type": "string", "const": "#1A1A1C" }
+      }
+    },
+    "section": {
+      "type": "object",
+      "required": ["id", "label", "color", "question", "items"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "enum": ["world", "think", "look", "discover", "explore", "make"],
+          "description": "Machine-readable section key"
+        },
+        "label": {
+          "type": "string",
+          "description": "Human-readable section title"
+        },
+        "color": {
+          "type": "string",
+          "pattern": "^#[0-9A-Fa-f]{6}$",
+          "description": "Hex color for this section's visual identity"
+        },
+        "question": {
+          "type": "string",
+          "description": "The framing question that opens this section each day"
+        },
+        "items": {
+          "type": "array",
+          "description": "Content items in this section; structure varies by section id",
+          "items": {
+            "oneOf": [
+              { "$ref": "#/$defs/world_item" },
+              { "$ref": "#/$defs/think_item" },
+              { "$ref": "#/$defs/look_item" },
+              { "$ref": "#/$defs/discover_item" },
+              { "$ref": "#/$defs/explore_item" },
+              { "$ref": "#/$defs/make_item" }
+            ]
+          }
+        }
+      }
+    },
+    "source_ref": {
+      "type": "object",
+      "description": "A source attribution with name and URL",
+      "required": ["name"],
+      "properties": {
+        "name": { "type": "string" },
+        "url":  { "type": "string", "format": "uri" }
+      }
+    },
+    "world_item": {
+      "type": "object",
+      "description": "A signal from the wider world — news, papers, policy shifts, deadlines",
+      "required": ["headline", "one_liner", "why_matters", "why_you", "source", "date"],
+      "properties": {
+        "headline":    { "type": "string", "description": "Signal headline" },
+        "one_liner":   { "type": "string", "description": "One-sentence summary" },
+        "why_matters": { "type": "string", "description": "Why this matters in the broader landscape" },
+        "why_you":     { "type": "string", "description": "Why this matters to the reader specifically" },
+        "source":      { "$ref": "#/$defs/source_ref" },
+        "date":        { "type": "string", "format": "date", "description": "Publication or event date" }
+      }
+    },
+    "think_item": {
+      "type": "object",
+      "description": "A thinking prompt — concept, question, or framework to sit with",
+      "required": ["question", "concept", "explanation", "why_matters", "connections_to_user", "sources"],
+      "properties": {
+        "question":           { "type": "string", "description": "The thinking question or provocation (large text)" },
+        "concept":            { "type": "string", "description": "Core concept name" },
+        "explanation":        { "type": "string", "description": "Explanation of the concept and its stakes" },
+        "why_matters":        { "type": "string", "description": "Why this idea matters now" },
+        "connections_to_user":{ "type": "string", "description": "How this connects to the reader's work or life" },
+        "sources": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/source_ref" },
+          "description": "Sources to explore further"
+        }
+      }
+    },
+    "look_item": {
+      "type": "object",
+      "description": "Something to look at — visual, spatial, or aesthetic encounter",
+      "required": ["subject", "subtitle", "look_for", "why_today"],
+      "properties": {
+        "subject":    { "type": "string", "description": "Artist, studio, or project name" },
+        "subtitle":   { "type": "string", "description": "Brief descriptor (e.g. 'Dutch graphic design studio')" },
+        "look_for": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 3,
+          "maxItems": 3,
+          "description": "Three observation tasks guiding how to look"
+        },
+        "image_url":  { "type": "string", "format": "uri", "description": "Lead image URL" },
+        "visit_url":  { "type": "string", "format": "uri", "description": "URL to visit the work/project" },
+        "why_today":  { "type": "string", "description": "Why encounter this today" }
+      }
+    },
+    "discover_item": {
+      "type": "object",
+      "description": "A person to discover — their work, mind, and overlaps with you",
+      "required": ["person_name", "roles", "description", "why_this_person", "interests_intersection"],
+      "properties": {
+        "person_name":           { "type": "string" },
+        "roles": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Roles or labels (e.g. ['scholar', 'artist', 'critic'])"
+        },
+        "description":           { "type": "string", "description": "Who they are and what they do" },
+        "why_this_person":       { "type": "string", "description": "Why this person is worth knowing now" },
+        "interests_intersection": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Shared interests between this person and the reader"
+        },
+        "image_url":    { "type": "string", "format": "uri" },
+        "explore_url":  { "type": "string", "format": "uri", "description": "URL to explore their work" }
+      }
+    },
+    "explore_item": {
+      "type": "object",
+      "description": "A rabbit hole to go down — question, entry point, branching paths",
+      "required": ["question", "start_here", "branches", "why_this_rabbit_hole"],
+      "properties": {
+        "question": {
+          "type": "string",
+          "description": "The question that opens the rabbit hole"
+        },
+        "start_here": { "$ref": "#/$defs/source_ref", "description": "The recommended entry point" },
+        "branches": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["label", "hint"],
+            "properties": {
+              "label": { "type": "string", "description": "Branch topic name" },
+              "hint":  { "type": "string", "description": "A one-line hint about what you'll find" }
+            }
+          },
+          "description": "Branching paths you could follow from the start point"
+        },
+        "why_this_rabbit_hole": { "type": "string", "description": "Why this is worth exploring now" }
+      }
+    },
+    "make_item": {
+      "type": "object",
+      "description": "A tool or technique to try — hands-on, actionable",
+      "required": ["tool_name", "what_it_does", "why_now", "try_suggestion"],
+      "properties": {
+        "tool_name":       { "type": "string", "description": "Tool or technique name" },
+        "what_it_does":    { "type": "string", "description": "What it does, in plain language" },
+        "why_now":         { "type": "string", "description": "Why this is timely to try now" },
+        "try_suggestion":  { "type": "string", "description": "A concrete first thing to try" },
+        "explore_url":     { "type": "string", "format": "uri", "description": "URL to documentation or project page" }
+      }
+    }
+  }
+}

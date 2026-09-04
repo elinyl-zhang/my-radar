@@ -1,0 +1,173 @@
+{
+  "date": "2026-09-04",
+  "greeting": "Five signals at the edge of your practice today — from collaborators that aren't quite tools, to memory that isn't quite yours. Plus: Studio Dumbar's visual rigor, Johanna Drucker's critical eye on the digital page, the Rhizome archive's fragile persistence, and a creative-coding toolkit that runs in your browser. Your radar is live.",
+  "sections": [
+    {
+      "id": "world",
+      "label": "WORLD",
+      "color": "#993556",
+      "question": "What's shifting in the landscape you work inside?",
+      "items": [
+        {
+          "headline": "AI Agents Are Becoming Collaborators, Not Tools",
+          "one_liner": "A new ACM CHI 2026 paper argues that the dominant metaphor for AI is shifting from 'tool' to 'collaborator', with real implications for agency, accountability, and design.",
+          "why_matters": "If AI agents are collaborators, then the design of human-AI workflows changes fundamentally — from command-and-control to negotiation, from delegation to co-creation. This affects every discipline that relies on AI-assisted work.",
+          "why_you": "You work at the intersection of digital humanities and creative practice. If your tools become collaborators, your authorship model, your citation practices, and your creative process all get re-examined.",
+          "source": {
+            "name": "ACM CHI 2026",
+            "url": "https://dl.acm.org/doi/10.1145/3772363.3778744"
+          },
+          "date": "2026-08-28"
+        },
+        {
+          "headline": "Who Owns Cultural Data in the Age of AI?",
+          "one_liner": "Europeana's new impulse paper asks who controls the cultural heritage data that AI models are trained on — and what governance structures are needed.",
+          "why_matters": "Cultural heritage institutions are the source data for generative AI trained on human culture. Who sets the terms of that extraction shapes what AI can know and who gets compensated.",
+          "why_you": "If you work with digital cultural heritage, this paper directly addresses the political economy of the data you already use — and the systems being built on top of it without your consent.",
+          "source": {
+            "name": "Europeana",
+            "url": "https://pro.europeana.eu/post/discover-our-new-impulse-paper-publishing-cultural-heritage-data-in-the-age-of-ai"
+          },
+          "date": "2026-08-20"
+        },
+        {
+          "headline": "Your First DH Publication Has a Deadline: October 1",
+          "one_liner": "DH Now is accepting submissions for its 2026 cycle — deadline October 1. A concrete next step for anyone in digital humanities with work to share.",
+          "why_matters": "Publication venues shape fields. DH Now is one of the few open, community-driven outlets for digital humanities work, and its call is a chance to move from project to public record.",
+          "why_you": "If you have DH work — a tool, a dataset, a method — sitting in a repo or a draft folder, this is the deadline that forces it into the world.",
+          "source": {
+            "name": "DH Now",
+            "url": "https://digitalhumanitiesnow.org/2026/08/submissions/"
+          },
+          "date": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "think",
+      "label": "THINK",
+      "color": "#3B5998",
+      "question": "What idea deserves a slow walk today?",
+      "items": [
+        {
+          "question": "What happens to memory when your tools remember for you — and what happens when they stop?",
+          "concept": "Cognitive Offloading & Distributed Memory",
+          "explanation": "A Nature Humanities and Social Sciences Communications paper examines how digital tools that store, surface, and synthesize information change the relationship between remembering and knowing. When a tool remembers your reading history, your bookmarks, your search patterns — you delegate a cognitive function outward. But the infrastructure of that memory is fragile: platforms sunset, APIs break, formats rot. The question isn't just whether we remember less, but whether we've built systems whose remembering we can't survive without.",
+          "why_matters": "This reframes digital preservation from an archival problem to a cognitive one. If your intellectual practice depends on externalized memory, then the durability of that memory is the durability of your thinking.",
+          "connections_to_user": "Your daily radar itself is an act of cognitive offloading — it surfaces, connects, and remembers signals so you don't have to hold them all at once. The question this paper raises is: what's your fallback when the radar goes dark?",
+          "sources": [
+            {
+              "name": "Nature Humanities and Social Sciences Communications",
+              "url": "https://www.nature.com/articles/s41599-026-06621-5"
+            }
+          ]
+        },
+        {
+          "question": "Can Python be a humanities method — not just a utility?",
+          "concept": "Code as Hermeneutic Practice",
+          "explanation": "The Programming Historian's lesson on building GUIs for digital humanities projects is, on the surface, a tutorial. But underneath it raises a structural question: when humanists write interfaces, not just scripts, they're making interpretive claims about how knowledge should be encountered. The GUI is an argument. Python becomes not a tool you apply to text, but a medium through which you think about text — the way a print designer thinks through layout, or a composer thinks through orchestration.",
+          "why_matters": "The distinction between 'using code' and 'thinking in code' is the boundary between digital humanities as service and digital humanities as practice. This lesson sits right on that boundary.",
+          "connections_to_user": "If you're building tools or interfaces for humanities work, you're already making hermeneutic choices — even if no one calls them that. Naming that explicitly changes how you design.",
+          "sources": [
+            {
+              "name": "Programming Historian",
+              "url": "https://programminghistorian.org/en/lessons/creating-guis-in-python-for-digital-humanities-projects"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "look",
+      "label": "LOOK",
+      "color": "#4A6741",
+      "question": "What visual work rewards a longer gaze today?",
+      "items": [
+        {
+          "subject": "Studio Dumbar",
+          "subtitle": "Dutch graphic design studio, Rotterdam",
+          "look_for": [
+            "Notice how typographic scale creates hierarchy without hierarchy — large forms that don't dominate, small forms that don't disappear.",
+            "Look at the interplay of photographic and geometric elements: where does the image stop and the system begin?",
+            "Watch for the use of color as structure, not decoration — color fields that divide space the way a grid would, but with more ambiguity."
+          ],
+          "image_url": "",
+          "visit_url": "https://studiodumbar.com",
+          "why_today": "Studio Dumbar's recent identity for the Rotterdam Philharmonic Orchestra reimagines how motion and classical form coexist — a live case study in designing for institutions that must be both historic and contemporary, a tension you navigate in your own work."
+        }
+      ]
+    },
+    {
+      "id": "discover",
+      "label": "DISCOVER",
+      "color": "#6B4C7A",
+      "question": "Whose mind should you encounter today?",
+      "items": [
+        {
+          "person_name": "Johanna Drucker",
+          "roles": ["scholar", "critic", "book artist", "typographer"],
+          "description": "Johanna Drucker is the Breslauer Professor of Bibliographical Studies at UCLA and one of the most incisive thinkers on the materiality of the page — physical and digital. Her work spans artist's books, critical theory, digital humanities, and the history of writing. She has argued persistently that the graphical and material qualities of text are not decoration but content — that form carries meaning in ways that plain-text transcription erases.",
+          "why_this_person": "Drucker's critique of the 'flat' digital page — the assumption that content is independent of its graphical presentation — is becoming more urgent as AI-generated text floods every surface. If form is content, then AI that outputs plain text is not just incomplete; it's wrong about what text is.",
+          "interests_intersection": [
+            "Materiality of digital artifacts",
+            "Critical approaches to visualization",
+            "Interface as interpretive act",
+            "History of writing and typographic form",
+            "Artist's books as scholarship"
+          ],
+          "image_url": "",
+          "explore_url": "https://www.johannadrucker.com"
+        }
+      ]
+    },
+    {
+      "id": "explore",
+      "label": "EXPLORE",
+      "color": "#B07333",
+      "question": "Where could one click take you today?",
+      "items": [
+        {
+          "question": "How do you preserve art that was made to be ephemeral — and what does 'preserving' it even mean?",
+          "start_here": {
+            "name": "Rhizome ArtBase",
+            "url": "https://artbase.rhizome.org"
+          },
+          "branches": [
+            {
+              "label": "Net Art & Browser-Based Work",
+              "hint": "Art that lives in the browser — what happens when the browser changes or disappears?"
+            },
+            {
+              "label": "Emulation vs. Documentation",
+              "hint": "Is a screenshot of a interactive work a preservation or an admission of loss?"
+            },
+            {
+              "label": "Webrecorder & Archiving Tools",
+              "hint": "Tools for high-fidelity web archiving — capture behavior, not just appearance"
+            },
+            {
+              "label": "Born-Digital Conservation Ethics",
+              "hint": "When does preserving a work become rewriting it? Where's the line?"
+            }
+          ],
+          "why_this_rabbit_hole": "Rhizome at the New Museum has been thinking about digital preservation since 1999 — before most institutions acknowledged that digital art existed. Their ArtBase is a living archive of net art, and their approach (emulation, documentation, and managed obsolescence) is relevant to anyone who makes things in code and wants them to survive. If you've ever wondered whether your web project will be accessible in ten years, this is where those questions have been taken seriously."
+        }
+      ]
+    },
+    {
+      "id": "make",
+      "label": "MAKE",
+      "color": "#1A1A1C",
+      "question": "What can you make with what's already in your browser?",
+      "items": [
+        {
+          "tool_name": "p5.js",
+          "what_it_does": "A JavaScript library for creative coding — sketches, generative art, interactive visualizations, and animations — that runs directly in the browser with no build step.",
+          "why_now": "p5.js 2.0 is in active development with improved WebGL, color management, and accessibility. The community is producing a wave of tutorials and examples that lower the entry cost further. If you've been meaning to start, the on-ramp has never been smoother.",
+          "try_suggestion": "Open the p5.js web editor at editor.p5js.org, paste this: function setup() { createCanvas(400, 400); } function draw() { background(20); noStroke(); for (let i = 0; i < 200; i++) { fill(random(255), random(100), random(200), 150); circle(random(width), random(height), random(5, 30)); } noLoop(); } — hit play. You just made generative art.",
+          "explore_url": "https://p5js.org"
+        }
+      ]
+    }
+  ]
+}
