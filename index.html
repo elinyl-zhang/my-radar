@@ -499,7 +499,7 @@
       html += '<div class="ew-label">03 / Look — What should train your eye?</div>';
       html += '<article>';
       if(lk.image_url){
-        html += '<img class="ew-look-image" src="' + esc(lk.image_url) + '" alt="' + esc(lk.subject || '') + '" style="width:100%;height:280px;object-fit:cover;" onerror="this.style.display='none'"/>';
+        html += '<img class="ew-look-image" src="' + esc(lk.image_url) + '" alt="' + esc(lk.subject || '') + '" style="width:100%;height:280px;object-fit:cover;" onerror="this.remove()"/>';
       }
       html += '<h3 class="ew-look-subject">' + esc(lk.subject || '') + '</h3>';
       if(lk.look_for && lk.look_for.length){
@@ -519,7 +519,7 @@
       html += '<div class="ew-label">04 / Discover — Who should enter your world?</div>';
       html += '<article><div class="ew-discover-layout">';
       if(ds.portrait_url){
-        html += '<img class="ew-discover-portrait" src="' + esc(ds.portrait_url) + '" alt="' + esc(ds.name || '') + '" style="width:120px;height:150px;object-fit:cover;" onerror="this.style.display='none'"/>';
+        html += '<img class="ew-discover-portrait" src="' + esc(ds.portrait_url) + '" alt="' + esc(ds.name || '') + '" style="width:120px;height:150px;object-fit:cover;" onerror="this.remove()"/>';
       } else {
         html += '<div class="ew-discover-portrait"><span class="ew-discover-portrait-placeholder">portrait</span></div>';
       }
