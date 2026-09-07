@@ -1,0 +1,472 @@
+{
+  "$schema": "radar-source-list-v1",
+  "version": "1.0",
+  "last_updated": "2026-09-03",
+  "total_sources": 42,
+
+  "sources": {
+
+    "AI": [
+      {
+        "name": "Anthropic Research",
+        "url": "https://www.anthropic.com/research",
+        "source_type": "lab",
+        "authority_level": "primary",
+        "domains": ["AI", "HCI"],
+        "signal_types": ["NOW"],
+        "expected_value": "high — frontier agent research, safety, HAI papers",
+        "update_frequency": "irregular (1-2/month)",
+        "priority": 1,
+        "notes": "Primary source for agent architecture, Claude capabilities, AI safety. Directly relevant to growth edge ge-02."
+      },
+      {
+        "name": "OpenAI Research",
+        "url": "https://openai.com/research",
+        "source_type": "lab",
+        "authority_level": "primary",
+        "domains": ["AI"],
+        "signal_types": ["NOW"],
+        "expected_value": "high — GPT/multimodal model releases, technical reports",
+        "update_frequency": "monthly",
+        "priority": 2,
+        "notes": "Model releases and technical deep-dives. Complements Anthropic for full picture of frontier AI."
+      },
+      {
+        "name": "Google DeepMind Blog",
+        "url": "https://deepmind.google/blog/",
+        "source_type": "lab",
+        "authority_level": "primary",
+        "domains": ["AI", "Cognitive Science"],
+        "signal_types": ["NOW", "LEARN"],
+        "expected_value": "high — AlphaFold, Gemini, neuroscience × AI intersection",
+        "update_frequency": "biweekly",
+        "priority": 3,
+        "notes": "Unique position at AI × Neuroscience. Valuable for cognitive science connections."
+      },
+      {
+        "name": "arXiv AI (cs.AI, cs.CL, cs.LG)",
+        "url": "https://arxiv.org/list/cs.AI/recent",
+        "source_type": "research",
+        "authority_level": "primary",
+        "domains": ["AI", "Data Science", "HCI"],
+        "signal_types": ["NOW", "LEARN"],
+        "expected_value": "very_high — preprint server, raw research, no paywall",
+        "update_frequency": "daily",
+        "priority": 1,
+        "notes": "THE primary signal source. Use with keyword filters to avoid noise. Focus on: agents, multimodal, HCI-AI, reasoning."
+      },
+      {
+        "name": "Hugging Face Papers",
+        "url": "https://huggingface.co/papers",
+        "source_type": "platform",
+        "authority_level": "authoritative",
+        "domains": ["AI", "Data Science"],
+        "signal_types": ["NOW", "BUILD"],
+        "expected_value": "high — trending ML papers with community engagement metrics",
+        "update_frequency": "daily",
+        "priority": 4,
+        "notes": "Good for discovering what's getting practical traction. Papers with Code links are BUILD signals."
+      },
+      {
+        "name": "Papers With Code",
+        "url": "https://paperswithcode.com",
+        "source_type": "dataset",
+        "authority_level": "authoritative",
+        "domains": ["AI", "Data Science"],
+        "signal_types": ["LEARN", "BUILD"],
+        "expected_value": "medium-high — benchmarks + implementations",
+        "update_frequency": "continuous",
+        "priority": 5,
+        "notes": "Useful when a NOW signal references a benchmark. Provides implementation context."
+      }
+    ],
+
+    "Data_Science": [
+      {
+        "name": "MIT OpenCourseWare — Mathematics for Computer Science",
+        "url": "https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-fall-2010/",
+        "source_type": "institution",
+        "authority_level": "primary",
+        "domains": ["Data Science", "Computer Science", "Mathematics"],
+        "signal_types": ["LEARN"],
+        "expected_value": "high — foundational math for DS, free, structured",
+        "update_frequency": "static (course archive)",
+        "priority": 1,
+        "notes": "Directly addresses growth edge ge-01 (DS foundations). Reference for LEARN recommendations."
+      },
+      {
+        "name": "StatQuest with Josh Starmer",
+        "url": "https://statquest.org/",
+        "source_type": "practitioner",
+        "authority_level": "authoritative",
+        "domains": ["Data Science", "Statistics", "Mathematics"],
+        "signal_types": ["LEARN"],
+        "expected_value": "high — intuitive explanations of stats/ML concepts",
+        "update_frequency": "weekly",
+        "priority": 2,
+        "notes": "Best visual explanation of statistical concepts on the internet. Perfect for DS foundation building."
+      },
+      {
+        "name": "arXiv Statistics (stat.ML, stat.CO)",
+        "url": "https://arxiv.org/list/stat.ML/recent",
+        "source_type": "research",
+        "authority_level": "primary",
+        "domains": ["Data Science", "Mathematics"],
+        "signal_types": ["NOW", "LEARN"],
+        "expected_value": "high — new methods in ML/statistics",
+        "update_frequency": "daily",
+        "priority": 3,
+        "notes": "Complement to arXiv AI. Focus on methods that connect theory to practice."
+      },
+      {
+        "name": "ThreeBlueOneBrown",
+        "url": "https://www.3blue1brown.com/",
+        "source_type": "practitioner",
+        "authority_level": "authoritative",
+        "domains": ["Data Science", "Mathematics"],
+        "signal_types": ["LEARN", "SEE"],
+        "expected_value": "very_high — visual intuition for mathematical concepts",
+        "update_frequency": "monthly",
+        "priority": 4,
+        "notes": "Exceptional for building mathematical intuition. Neural networks series is essential viewing."
+      }
+    ],
+
+    "Psychology_Cognitive_Science": [
+      {
+        "name": "Nature Human Behaviour",
+        "url": "https://www.nature.com/nathumbehav/",
+        "source_type": "journal",
+        "authority_level": "primary",
+        "domains": ["Psychology", "Cognitive Science", "HCI"],
+        "signal_types": ["NOW", "LEARN"],
+        "expected_value": "very_high — top-tier journal at psychology × behavior × technology intersection",
+        "update_frequency": "weekly",
+        "priority": 1,
+        "notes": "Single most important psych/cogsci source. Covers cognition, decision-making, tech impact on behavior."
+      },
+      {
+        "name": "Psychological Science",
+        "url": "https://journals.sagepub.com/home/pss",
+        "source_type": "journal",
+        "authority_level": "primary",
+        "domains": ["Psychology", "Cognitive Science"],
+        "signal_types": ["NOW", "LEARN"],
+        "expected_value": "high — premier journal for experimental psychology",
+        "update_frequency": "monthly",
+        "priority": 2,
+        "notes": "Stronger on pure experimental psych than Nature HB. Good for cognitive load, memory, attention research."
+      },
+      {
+        "name": "APA PsycNet (selected open access)",
+        "url": "https://psycnet.apa.org/",
+        "source_type": "database",
+        "authority_level": "primary",
+        "domains": ["Psychology"],
+        "signal_types": ["LEARN"],
+        "expected_value": "medium — comprehensive psych database (some paywall)",
+        "update_frequency": "continuous",
+        "priority": 3,
+        "notes": "Use via Ca' Foscari library access. Primary literature database for psychology."
+      },
+      {
+        "name": "Stanford Encyclopedia of Philosophy — Cognitive Science",
+        "url": "https://plato.stanford.edu/entries/cognitive-science/",
+        "source_type": "reference",
+        "authority_level": "primary",
+        "domains": ["Cognitive Science", "Philosophy"],
+        "signal_types": ["LEARN"],
+        "expected_value": "high — authoritative conceptual grounding",
+        "update_frequency": "static (updated entries)",
+        "priority": 4,
+        "notes": "Excellent for LEARN signals that need conceptual clarity before diving into papers."
+      }
+    ],
+
+    "HCI_Interaction_Design": [
+      {
+        "name": "ACM CHI Conference Proceedings",
+        "url": "https://dl.acm.org/conference/chi",
+        "source_type": "conference",
+        "authority_level": "primary",
+        "domains": ["HCI", "Interaction Design", "UX"],
+        "signal_types": ["NOW", "LEARN", "SEE"],
+        "expected_value": "very_high — premier HCI conference, defines the field's direction",
+        "update_frequency": "annual (May) + preprints year-round",
+        "priority": 1,
+        "notes": "Core HCI source. Best papers define what matters in HCI each year. Essential for career direction."
+      },
+      {
+        "name": "ACM TOCHI (Transactions on Computer-Human Interaction)",
+        "url": "https://dl.acm.org/journal/tochi",
+        "source_type": "journal",
+        "authority_level": "primary",
+        "domains": ["HCI", "Interaction Design"],
+        "signal_types": ["NOW", "LEARN"],
+        "expected_value": "high — deepest HCI research, long-form papers",
+        "update_frequency": "quarterly",
+        "priority": 2,
+        "notes": "More theoretical than CHI. Good for understanding HCI foundations, not just latest trends."
+      },
+      {
+        "name": "Nielsen Norman Group (NN/g)",
+        "url": "https://www.nngroup.com/articles/",
+        "source_type": "practitioner",
+        "authority_level": "authoritative",
+        "domains": ["HCI", "UX", "Interaction Design"],
+        "signal_types": ["LEARN", "SEE"],
+        "expected_value": "high — UX research made practical, evidence-based",
+        "update_frequency": "weekly",
+        "priority": 3,
+        "notes": "Bridges academic HCI and practice. Articles on usability, information architecture, interaction patterns."
+      },
+      {
+        "name": "Interactions Magazine (ACM)",
+        "url": "https://interactions.acm.org/",
+        "source_type": "publication",
+        "authority_level": "authoritative",
+        "domains": ["HCI", "Design", "Interaction Design"],
+        "signal_types": ["NOW", "SEE"],
+        "expected_value": "high — accessible HCI/design commentary + case studies",
+        "update_frequency": "bimonthly",
+        "priority": 4,
+        "notes": "More readable than CHI proceedings. Good for SEE signals — design case studies with analysis."
+      }
+    ],
+
+    "Design_Typography_Visual": [
+      {
+        "name": "AIGA Eye on Design",
+        "url": "https://eyeondesign.aiga.org/",
+        "source_type": "publication",
+        "authority_level": "primary",
+        "domains": ["Design", "Visual Design", "Editorial Design"],
+        "signal_types": ["NOW", "SEE"],
+        "expected_value": "high — design criticism, process documentation, industry direction",
+        "update_frequency": "weekly",
+        "priority": 1,
+        "notes": "Top-tier design publication. Not just pretty pictures — real design thinking and criticism."
+      },
+      {
+        "name": "It's Nice That",
+        "url": "https://www.itsnicethat.com/",
+        "source_type": "publication",
+        "authority_level": "authoritative",
+        "domains": ["Design", "Visual Design", "Editorial Design"],
+        "signal_types": ["SEE"],
+        "expected_value": "high — daily creative work showcase with brief context",
+        "update_frequency": "daily",
+        "priority": 2,
+        "notes": "Good for SEE signals — discover new work, note techniques. Keep it quick — don't deep-dive every post."
+      },
+      {
+        "name": "Information Is Beautiful",
+        "url": "https://informationisbeautiful.net/",
+        "source_type": "practitioner",
+        "authority_level": "authoritative",
+        "domains": ["Data Visualization", "Design"],
+        "signal_types": ["SEE", "LEARN"],
+        "expected_value": "high — dataviz best practices demonstrated, not just theorized",
+        "update_frequency": "irregular",
+        "priority": 3,
+        "notes": "David McCandless's work. Each visualization is a mini-case study in information design."
+      },
+      {
+        "name": "Typographica (Oliver Reichenstein)",
+        "url": "https://typographica.org/",
+        "source_type": "practitioner",
+        "authority_level": "primary",
+        "domains": ["Design", "Typography", "Editorial Design"],
+        "signal_types": ["LEARN", "SEE"],
+        "expected_value": "very_high — deepest typography thinking on the web",
+        "update_frequency": "monthly",
+        "priority": 4,
+        "notes": "iA founder. Essential reading for typography as information architecture, not decoration."
+      },
+      {
+        "name": "Design Principles Index (InVision/now archived)",
+        "url": "https://www.designprinciplesftw.com/",
+        "source_type": "reference",
+        "authority_level": "secondary",
+        "domains": ["Design", "Interaction Design", "Visual Design"],
+        "signal_types": ["LEARN"],
+        "expected_value": "medium — searchable collection of design principles with examples",
+        "update_frequency": "static",
+        "priority": 5,
+        "notes": "Quick reference for design pattern discovery. Use when a SEE signal references an unfamiliar principle."
+      }
+    ],
+
+    "Data_Visualization": [
+      {
+        "name": "Pudding.cool / Pudding",
+        "url": "https://pudding.cool/",
+        "source_type": "practitioner",
+        "authority_level": "primary",
+        "domains": ["Data Visualization", "Design", "Journalism"],
+        "signal_types": ["SEE", "BUILD"],
+        "expected_value": "very_high — visual essays that push dataviz boundaries",
+        "update_frequency": "weekly",
+        "priority": 1,
+        "notes": "Gold standard for creative data visualization. Every piece is a SEE signal candidate. Process often documented."
+      },
+      {
+        "name": "Data Visualization Society",
+        "url": "https://datavisualizationsociety.org/",
+        "source_type": "community",
+        "authority_level": "authoritative",
+        "domains": ["Data Visualization"],
+        "signal_types": ["NOW", "LEARN", "SEE"],
+        "expected_value": "high — community standards, critiques, tutorials",
+        "update_frequency": "weekly",
+        "priority": 2,
+        "notes": "WeekUp newsletter is good signal source. Community discussions surface trends early."
+      },
+      {
+        "name": "The Functional Art (Alberto Cairo)",
+        "url": "http://www.thefunctionalart.com/",
+        "source_type": "practitioner",
+        "authority_level": "primary",
+        "domains": ["Data Visualization", "Design", "Journalism"],
+        "signal_types": ["LEARN", "SEE"],
+        "expected_value": "very_high — dataviz philosophy: truthful, functional, beautiful, insightful",
+        "update_frequency": "weekly",
+        "priority": 3,
+        "notes": "Cairo's framework (truthful/functional/beautiful/insightful) is the right mental model for dataviz evaluation."
+      },
+      {
+        "name": "Observable",
+        "url": "https://observablehq.com/explore",
+        "source_type": "platform",
+        "authority_level": "authoritative",
+        "domains": ["Data Visualization", "Data Science"],
+        "signal_types": ["SEE", "BUILD"],
+        "expected_value": "high — live notebooks showing dataviz/code in action",
+        "update_frequency": "continuous",
+        "priority": 4,
+        "notes": "Good for BUILD signals — find reusable approaches. Also SEE for technique discovery."
+      }
+    ],
+
+    "Culture_Cultural_Heritage": [
+      {
+        "name": "Europeana",
+        "url": "https://www.europeana.eu/en",
+        "source_type": "archive",
+        "authority_level": "primary",
+        "domains": ["Culture", "Cultural Heritage", "Digital Humanities"],
+        "signal_types": ["NOW", "BUILD"],
+        "expected_value": "very_high — Europe's digital cultural heritage platform, millions of items",
+        "update_frequency": "continuous",
+        "priority": 1,
+        "notes": "Living in Europe = direct access. Potential data source for DH projects. Blog covers digital preservation news."
+      },
+      {
+        "name": "UNESCO Culture Sector",
+        "url": "https://en.unesco.org/themes/cultural-heritage",
+        "source_type": "institution",
+        "authority_level": "primary",
+        "domains": ["Culture", "Cultural Heritage"],
+        "signal_types": ["NOW", "LEARN"],
+        "expected_value": "high — global policy, conventions, heritage protection frameworks",
+        "update_frequency": "weekly",
+        "priority": 2,
+        "notes": "Policy-level view of cultural heritage. Useful for understanding the institutional landscape around preservation."
+      },
+      {
+        "name": "Digital Humanities Quarterly",
+        "url": "https://digitalhumanities.org/dhq/",
+        "source_type": "journal",
+        "authority_level": "primary",
+        "domains": ["Digital Humanities", "Cultural Heritage", "Data Science"],
+        "signal_types": ["NOW", "LEARN", "BUILD"],
+        "expected_value": "very_high — premier DH journal, peer-reviewed, open access",
+        "update_frequency": "quarterly",
+        "priority": 3,
+        "notes": "Where DH research happens. Essential for understanding current state of the field and finding research directions."
+      },
+      {
+        "name": "Programming Historian",
+        "url": "https://programminghistorian.org/",
+        "source_type": "tutorial",
+        "authority_level": "primary",
+        "domains": ["Digital Humanities", "Data Science", "Programming"],
+        "signal_types": ["LEARN", "BUILD"],
+        "expected_value": "very_high — peer-reviewed technical lessons for humanists learning to code",
+        "update_frequency": "monthly",
+        "priority": 4,
+        "notes": "Perfect entry point into DH. Lessons are practical, code-based, and cover real research workflows."
+      },
+      {
+        "name": "Venice Musei Civici",
+        "url": "https://museiciviciveneziani.it/",
+        "source_type": "archive",
+        "authority_level": "primary",
+        "domains": ["Culture", "Cultural Heritage"],
+        "signal_types": ["NOW", "BUILD"],
+        "expected_value": "high — Venice civic museums network, local exhibitions and collections",
+        "update_frequency": "weekly",
+        "priority": 5,
+        "notes": "Local Venice resource. Exhibitions, events, digitization projects. Physical access available."
+      },
+      {
+        "name": "Stanford Digital Humanities Resources",
+        "url": "https://dh.stanford.edu/resources/",
+        "source_type": "institution",
+        "authority_level": "authoritative",
+        "domains": ["Digital Humanities"],
+        "signal_types": ["LEARN", "BUILD"],
+        "expected_value": "high — curated tools, methods, project directory from leading DH center",
+        "update_frequency": "quarterly",
+        "priority": 6,
+        "notes": "Good overview of DH ecosystem. Useful for discovering methods and potential collaborators."
+      }
+    ],
+
+    "Knowledge_Systems": [
+      {
+        "name": "Building a Second Brain (Tiago Forte)",
+        "url": "https://fortelabs.com/second-brain/",
+        "source_type": "practitioner",
+        "authority_level": "authoritative",
+        "domains": ["Knowledge Systems", "Productivity"],
+        "signal_types": ["LEARN"],
+        "expected_value": "medium-high — CODE method for personal knowledge management",
+        "update_frequency": "static (book/site)",
+        "priority": 1,
+        "notes": "Relevant to your Anki system and knowledge organization habits. The PKM framework, not the hype."
+      },
+      {
+        "name": "Andy Matuschak's Notes",
+        "url": "https://andymatuschak.org/notes/",
+        "source_type": "practitioner",
+        "authority_level": "primary",
+        "domains": ["Knowledge Systems", "Cognitive Science", "HCI"],
+        "signal_types": ["LEARN", "SEE"],
+        "expected_value": "very_high — original thinking on memory, learning systems, augmented cognition",
+        "update_frequency": "irregular",
+        "priority": 2,
+        "notes": "Orbit project, spaced repetition research, notes-as-thinking-tool. Directly connects Knowledge Systems × CogSci × HCI."
+      }
+    ]
+  },
+
+  "meta": {
+    "curation_principles": [
+      "Every source must have a clear justification for inclusion",
+      "No two sources should serve identical purpose (deduplication by function, not URL)",
+      "Authority level reflects trustworthiness of content, not popularity",
+      "European sources prioritized where equivalent quality exists (user is in Venice)",
+      "Open-access or free tier preferred; paid sources noted but included only if uniquely valuable"
+    ],
+    "maintenance_schedule": "Review quarterly; add/remove based on signal quality over time",
+    "excluded_sources_log": [
+      { "name": "TechCrunch", "reason": "too much market/funding noise, low depth" },
+      { "name": "The Verge AI coverage", "reason": "good writing but consumer-focused, not research-grade" },
+      { "name": "Ben's Bites (newsletter)", "reason": "in v1 source list; useful but secondary to primary sources" },
+      { "name": "The Rundown AI (newsletter)", "reason": "in v1 source list; same as above" },
+      { "name": "Medium AI publications", "reason": "quality varies wildly, no editorial filter" },
+      { "name": "Towards Data Science (Medium)", "reason": "mixed quality; use StatQuest and arXiv instead" }
+    ]
+  }
+}

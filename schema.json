@@ -1,196 +1,211 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "my-radar-v5-feed",
-  "title": "My Radar — Personal Intellectual Magazine Feed (v5)",
-  "description": "Daily feed schema for a six-section magazine: WORLD, THINK, LOOK, DISCOVER, EXPLORE, MAKE.",
+  "$id": "radar-daily-feed-v2",
+  "title": "My Radar — Daily Feed (v2)",
+  "description": "One day's issue of My Radar: signals plotted against four intellectual territories, one emerging pattern, one open question, and six editorial windows. The page is rendered from this file alone — there is no AI call at runtime.",
   "type": "object",
-  "required": ["date", "greeting", "sections"],
+  "required": ["date", "territories", "signals", "pattern", "open_question", "editorial"],
   "properties": {
+    "$schema": { "type": "string", "const": "radar-daily-feed-v2" },
     "date": {
       "type": "string",
       "format": "date",
-      "description": "ISO 8601 date for this issue (YYYY-MM-DD)"
+      "description": "ISO 8601 date of this issue (YYYY-MM-DD)."
     },
-    "greeting": {
-      "type": "string",
-      "description": "A short, personal editorial greeting for the day's issue"
-    },
-    "sections": {
+    "territories": {
       "type": "array",
-      "description": "The six daily sections, always in canonical order",
-      "minItems": 6,
-      "maxItems": 6,
-      "items": {
-        "$ref": "#/$defs/section"
-      }
-    }
+      "description": "The four fixed intellectual territories. These stay stable over time — what moves is where signals land inside them.",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": { "$ref": "#/$defs/territory" }
+    },
+    "signals": {
+      "type": "array",
+      "description": "Today's signals. Each is a real artefact (paper, tool, study, person) plus a written account of why it is on the radar at all.",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/signal" }
+    },
+    "pattern": {
+      "$ref": "#/$defs/pattern",
+      "description": "The cross-signal pattern of the day. One signal is news; several unrelated teams converging is a pattern."
+    },
+    "open_question": {
+      "$ref": "#/$defs/open_question",
+      "description": "One unresolved question to carry out of the issue. Deliberately left unanswered."
+    },
+    "editorial": { "$ref": "#/$defs/editorial" }
   },
   "$defs": {
-    "color_map": {
+    "territory": {
       "type": "object",
-      "description": "Canonical hex colors per section",
+      "required": ["name", "x", "y"],
       "properties": {
-        "world":    { "type": "string", "const": "#993556" },
-        "think":    { "type": "string", "const": "#3B5998" },
-        "look":     { "type": "string", "const": "#4A6741" },
-        "discover": { "type": "string", "const": "#6B4C7A" },
-        "explore":  { "type": "string", "const": "#B07333" },
-        "make":     { "type": "string", "const": "#1A1A1C" }
+        "name": { "type": "string", "description": "Display name, e.g. 'AI SYSTEMS'." },
+        "x": { "type": "number", "description": "Horizontal position on the landscape plot." },
+        "y": { "type": "number", "description": "Vertical position on the landscape plot." }
       }
     },
-    "section": {
+    "signal": {
       "type": "object",
-      "required": ["id", "label", "color", "question", "items"],
+      "required": [
+        "id", "headline", "one_liner", "signal_type", "chain", "why_you",
+        "title", "source", "url", "date", "summary",
+        "why_it_matters", "why_you_should_care",
+        "radar_score", "domains", "connections",
+        "suggested_action", "landscape"
+      ],
       "properties": {
-        "id": {
+        "id": { "type": "string", "description": "Short stable id within the issue, e.g. 's1'." },
+        "headline": { "type": "string", "description": "Editorial headline written for this reader, not the source's own title." },
+        "one_liner": { "type": "string", "description": "One sentence: what this actually is." },
+        "signal_type": {
           "type": "string",
-          "enum": ["world", "think", "look", "discover", "explore", "make"],
-          "description": "Machine-readable section key"
+          "enum": ["NOW", "LEARN", "OPPORTUNITY"],
+          "description": "NOW = it happened; LEARN = worth understanding; OPPORTUNITY = you could act on it."
         },
-        "label": {
+        "chain": {
           "type": "string",
-          "description": "Human-readable section title"
+          "description": "The territory-to-territory connection this signal makes, e.g. 'AI SYSTEMS → HUMAN COGNITION'. A signal that connects no second territory is usually not worth publishing."
         },
-        "color": {
-          "type": "string",
-          "pattern": "^#[0-9A-Fa-f]{6}$",
-          "description": "Hex color for this section's visual identity"
+        "why_you": { "type": "string", "description": "Why this lands on this specific reader's radar, addressed in the second person." },
+        "title": { "type": "string", "description": "Original title of the source artefact." },
+        "source": { "type": "string", "description": "Publication or venue, e.g. 'arXiv (cs.CL)'." },
+        "url": { "type": "string", "format": "uri", "description": "Canonical link to the source." },
+        "date": { "type": "string", "format": "date", "description": "Publication date of the source." },
+        "summary": { "type": "string", "description": "Factual summary of the source. No editorialising here." },
+        "why_it_matters": { "type": "string", "description": "Why the field should care." },
+        "why_you_should_care": { "type": "string", "description": "Why this reader should care, tied to an active project or growth edge." },
+        "radar_score": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 10,
+          "description": "Relevance score for this reader. Drives ordering and visual weight."
         },
-        "question": {
-          "type": "string",
-          "description": "The framing question that opens this section each day"
-        },
-        "items": {
+        "domains": {
           "type": "array",
-          "description": "Content items in this section; structure varies by section id",
-          "items": {
-            "oneOf": [
-              { "$ref": "#/$defs/world_item" },
-              { "$ref": "#/$defs/think_item" },
-              { "$ref": "#/$defs/look_item" },
-              { "$ref": "#/$defs/discover_item" },
-              { "$ref": "#/$defs/explore_item" },
-              { "$ref": "#/$defs/make_item" }
-            ]
+          "items": { "type": "string" },
+          "description": "Territories this signal touches."
+        },
+        "connections": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Explicit links to other signals, projects, or prior issues."
+        },
+        "suggested_action": {
+          "type": "string",
+          "description": "One concrete next step. Vague actions ('read more') are rejected by the protocol."
+        },
+        "landscape": {
+          "type": "object",
+          "description": "Where the signal sits on the territory plot.",
+          "required": ["x", "y"],
+          "properties": {
+            "x": { "type": "number" },
+            "y": { "type": "number" }
           }
         }
       }
     },
-    "source_ref": {
+    "pattern": {
       "type": "object",
-      "description": "A source attribution with name and URL",
-      "required": ["name"],
+      "required": ["label", "statement"],
       "properties": {
-        "name": { "type": "string" },
-        "url":  { "type": "string", "format": "uri" }
+        "label": { "type": "string", "description": "Short label, e.g. 'PATTERN EMERGING'." },
+        "statement": { "type": "string", "description": "The synthesis: what several unrelated sources converged on this week." }
       }
     },
-    "world_item": {
+    "open_question": {
       "type": "object",
-      "description": "A signal from the wider world — news, papers, policy shifts, deadlines",
-      "required": ["headline", "one_liner", "why_matters", "why_you", "source", "date"],
+      "required": ["label", "text"],
       "properties": {
-        "headline":    { "type": "string", "description": "Signal headline" },
-        "one_liner":   { "type": "string", "description": "One-sentence summary" },
-        "why_matters": { "type": "string", "description": "Why this matters in the broader landscape" },
-        "why_you":     { "type": "string", "description": "Why this matters to the reader specifically" },
-        "source":      { "$ref": "#/$defs/source_ref" },
-        "date":        { "type": "string", "format": "date", "description": "Publication or event date" }
+        "label": { "type": "string", "description": "Short label, e.g. 'A QUESTION WORTH CARRYING'." },
+        "text": { "type": "string", "description": "The question itself. Must be genuinely open." }
       }
     },
-    "think_item": {
+    "editorial": {
       "type": "object",
-      "description": "A thinking prompt — concept, question, or framework to sit with",
-      "required": ["question", "concept", "explanation", "why_matters", "connections_to_user", "sources"],
+      "description": "The six editorial windows. Same shape every day, different content.",
+      "required": ["world", "think", "look", "discover", "explore", "make"],
       "properties": {
-        "question":           { "type": "string", "description": "The thinking question or provocation (large text)" },
-        "concept":            { "type": "string", "description": "Core concept name" },
-        "explanation":        { "type": "string", "description": "Explanation of the concept and its stakes" },
-        "why_matters":        { "type": "string", "description": "Why this idea matters now" },
-        "connections_to_user":{ "type": "string", "description": "How this connects to the reader's work or life" },
-        "sources": {
+        "world": {
           "type": "array",
-          "items": { "$ref": "#/$defs/source_ref" },
-          "description": "Sources to explore further"
-        }
-      }
-    },
-    "look_item": {
-      "type": "object",
-      "description": "Something to look at — visual, spatial, or aesthetic encounter",
-      "required": ["subject", "subtitle", "look_for", "why_today"],
-      "properties": {
-        "subject":    { "type": "string", "description": "Artist, studio, or project name" },
-        "subtitle":   { "type": "string", "description": "Brief descriptor (e.g. 'Dutch graphic design studio')" },
-        "look_for": {
-          "type": "array",
-          "items": { "type": "string" },
-          "minItems": 3,
-          "maxItems": 3,
-          "description": "Three observation tasks guiding how to look"
-        },
-        "image_url":  { "type": "string", "format": "uri", "description": "Lead image URL" },
-        "visit_url":  { "type": "string", "format": "uri", "description": "URL to visit the work/project" },
-        "why_today":  { "type": "string", "description": "Why encounter this today" }
-      }
-    },
-    "discover_item": {
-      "type": "object",
-      "description": "A person to discover — their work, mind, and overlaps with you",
-      "required": ["person_name", "roles", "description", "why_this_person", "interests_intersection"],
-      "properties": {
-        "person_name":           { "type": "string" },
-        "roles": {
-          "type": "array",
-          "items": { "type": "string" },
-          "description": "Roles or labels (e.g. ['scholar', 'artist', 'critic'])"
-        },
-        "description":           { "type": "string", "description": "Who they are and what they do" },
-        "why_this_person":       { "type": "string", "description": "Why this person is worth knowing now" },
-        "interests_intersection": {
-          "type": "array",
-          "items": { "type": "string" },
-          "description": "Shared interests between this person and the reader"
-        },
-        "image_url":    { "type": "string", "format": "uri" },
-        "explore_url":  { "type": "string", "format": "uri", "description": "URL to explore their work" }
-      }
-    },
-    "explore_item": {
-      "type": "object",
-      "description": "A rabbit hole to go down — question, entry point, branching paths",
-      "required": ["question", "start_here", "branches", "why_this_rabbit_hole"],
-      "properties": {
-        "question": {
-          "type": "string",
-          "description": "The question that opens the rabbit hole"
-        },
-        "start_here": { "$ref": "#/$defs/source_ref", "description": "The recommended entry point" },
-        "branches": {
-          "type": "array",
+          "description": "What happened. Intelligence briefing.",
           "items": {
             "type": "object",
-            "required": ["label", "hint"],
+            "required": ["headline", "sub", "why", "source_url", "source_name"],
             "properties": {
-              "label": { "type": "string", "description": "Branch topic name" },
-              "hint":  { "type": "string", "description": "A one-line hint about what you'll find" }
+              "headline": { "type": "string" },
+              "sub": { "type": "string" },
+              "why": { "type": "string" },
+              "source_url": { "type": "string", "format": "uri" },
+              "source_name": { "type": "string" }
             }
-          },
-          "description": "Branching paths you could follow from the start point"
+          }
         },
-        "why_this_rabbit_hole": { "type": "string", "description": "Why this is worth exploring now" }
-      }
-    },
-    "make_item": {
-      "type": "object",
-      "description": "A tool or technique to try — hands-on, actionable",
-      "required": ["tool_name", "what_it_does", "why_now", "try_suggestion"],
-      "properties": {
-        "tool_name":       { "type": "string", "description": "Tool or technique name" },
-        "what_it_does":    { "type": "string", "description": "What it does, in plain language" },
-        "why_now":         { "type": "string", "description": "Why this is timely to try now" },
-        "try_suggestion":  { "type": "string", "description": "A concrete first thing to try" },
-        "explore_url":     { "type": "string", "format": "uri", "description": "URL to documentation or project page" }
+        "think": {
+          "type": "array",
+          "description": "What idea is worth carrying.",
+          "items": {
+            "type": "object",
+            "required": ["concept", "question", "explain", "why", "source_url"],
+            "properties": {
+              "concept": { "type": "string" },
+              "question": { "type": "string" },
+              "explain": { "type": "string" },
+              "why": { "type": "string" },
+              "source_url": { "type": "string", "format": "uri" }
+            }
+          }
+        },
+        "look": {
+          "type": "object",
+          "description": "Aesthetic training — one thing to look at closely.",
+          "required": ["subject", "look_for", "visit_url", "visit_name", "image_url"],
+          "properties": {
+            "subject": { "type": "string" },
+            "look_for": { "type": "string" },
+            "visit_url": { "type": "string", "format": "uri" },
+            "visit_name": { "type": "string" },
+            "image_url": { "type": "string", "format": "uri" }
+          }
+        },
+        "discover": {
+          "type": "object",
+          "description": "One person who should enter this reader's world.",
+          "required": ["name", "roles", "desc", "why", "tags", "link_url"],
+          "properties": {
+            "name": { "type": "string" },
+            "roles": { "type": "string" },
+            "desc": { "type": "string" },
+            "why": { "type": "string" },
+            "tags": { "type": "array", "items": { "type": "string" } },
+            "link_url": { "type": "string", "format": "uri" }
+          }
+        },
+        "explore": {
+          "type": "object",
+          "description": "One rabbit hole worth following.",
+          "required": ["question", "start_url", "start_name", "trail", "why"],
+          "properties": {
+            "question": { "type": "string" },
+            "start_url": { "type": "string", "format": "uri" },
+            "start_name": { "type": "string" },
+            "trail": { "type": "array", "items": { "type": "string" } },
+            "why": { "type": "string" }
+          }
+        },
+        "make": {
+          "type": "object",
+          "description": "One tool, framed by the situation it is useful in.",
+          "required": ["tool", "does", "why", "try", "link_url"],
+          "properties": {
+            "tool": { "type": "string" },
+            "does": { "type": "string" },
+            "why": { "type": "string" },
+            "try": { "type": "string" },
+            "link_url": { "type": "string", "format": "uri" }
+          }
+        }
       }
     }
   }
