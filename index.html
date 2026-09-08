@@ -733,254 +733,255 @@
   var feedCache = null;
 var feed = {
   "$schema": "radar-daily-feed-v2",
-  "date": "2026-09-07",
+  "date": "2026-09-08",
   "territories": [
-    { "name": "AI SYSTEMS", "x": 716, "y": 180 },
-    { "name": "HUMAN COGNITION", "x": 248, "y": 200 },
-    { "name": "CULTURAL DATA", "x": 280, "y": 452 },
-    { "name": "DIGITAL HUMANITIES", "x": 712, "y": 462 }
+    { "name": "AI SYSTEMS", "x": 726, "y": 168 },
+    { "name": "HUMAN COGNITION", "x": 258, "y": 208 },
+    { "name": "CULTURAL DATA", "x": 292, "y": 438 },
+    { "name": "DIGITAL HUMANITIES", "x": 704, "y": 476 }
   ],
   "signals": [
     {
       "id": "s1",
-      "headline": "Agent Memory Learns to Track What Changed",
-      "one_liner": "MemoryLACE models the lifecycle of evidence — merge, supersession, contradiction — instead of storing memories as flat facts",
+      "headline": "AI Tutors Finally Have Someone to Practise On",
+      "one_liner": "Microsoft and UIUC train one simulator per student, scored on two axes separately: does it still sound like them, and can it actually be taught",
       "signal_type": "NOW",
-      "chain": "AI SYSTEMS → HUMAN COGNITION",
-      "why_you": "Your Phase 9 coaching layer persists conversations. This paper asks the question your schema hasn't answered yet: what happens when a later message contradicts an earlier one?",
-      "title": "MemoryLACE: Memory Lifecycle-Aware Consolidation and Evidence Retrieval",
-      "source": "arXiv (cs.CL)",
-      "url": "https://arxiv.org/abs/2609.03201",
-      "date": "2026-09-02",
-      "summary": "Argues that long-term LLM agents must distinguish repeated evidence, historical states, updates and unresolved contradictions — but that most textual memory systems leave those relations implicit, while richer structured approaches pay for them in complexity. MemLACE models the lifecycle explicitly through sparse merge, supersession and contradiction relations while preserving atomic natural-language memories and their provenance. At retrieval time it reconstructs relation-aware evidence units that expose current, historical, supporting and conflicting evidence. On BEAM and StructMemEval it achieves the highest overall performance in same-backbone comparisons and cuts end-to-end runtime on BEAM by 66.6% relative to Hindsight, the strongest reported reflective-memory baseline. Ablations identify lifecycle expansion and temporal awareness as the principal contributors.",
-      "why_it_matters": "It shows you don't need a full knowledge graph or global reflection to get long-term memory right — modelling the local lifecycle of evidence is sufficient. That's a much cheaper design than the field assumed.",
-      "why_you_should_care": "You already require every coaching suggestion to carry an Evidence ID, a reasoning trace and a confidence number. MemLACE is the same instinct applied to storage: a fact with no origin and no history isn't a fact, it's a guess.",
+      "chain": "HUMAN COGNITION → AI SYSTEMS",
+      "why_you": "Your coaching layer can generate advice. It cannot yet tell whether the advice changed anything. This paper names that missing piece and builds a stand-in for it.",
+      "title": "StudentSim: Training LLM-based Student Simulators",
+      "source": "arXiv",
+      "url": "https://arxiv.org/abs/2609.01591",
+      "date": "2026-09-01",
+      "summary": "AI tutors need student feedback to improve, but real student feedback is slow, expensive and sparse — in the L2 writing corpus the median learner produced only 3 essays, and over two-thirds produced 5 or fewer. StudentSim trains a per-student simulator in two stages: first pooled across many students to learn domain-level shared patterns, then specialised on one student's own records. It evaluates on two separate axes rather than one: behavioral fidelity (does it reproduce what this student would actually do unaided) and guidance responsiveness (after reading the tutor's guidance, does it move toward the target). Across chess, L2 English writing and mathematics with 60 real students, it beats GPT-5.4, GPT-4o and the state-tracking model Maia2 on both axes. Crucially, when the frozen simulator is used as the reward source for RL on a tutor policy, expert blind rating puts the resulting tutor first on accuracy (90.5% vs 75.7% without RL), guidance quality and personalisation.",
+      "why_it_matters": "It separates two things that are usually collapsed into one number: sounding like the person, and being movable by instruction. High fidelity with low responsiveness just replays errors; high responsiveness with low fidelity is obedient but starts from the wrong place. Only the corner matters.",
+      "why_you_should_care": "This is the exact evaluation problem your Academic Coach has. You already require Evidence ID, reasoning and confidence on every suggestion — but you have no test for whether the suggestion worked. Behavioral fidelity and guidance responsiveness are two metrics you could actually implement against your own conversation store.",
       "radar_score": 0.91,
-      "domains": ["AI SYSTEMS", "HUMAN COGNITION"],
+      "domains": ["HUMAN COGNITION", "AI SYSTEMS"],
       "connections": [
-        { "to_signal": "s2", "type": "convergence" },
-        { "to_signal": "s3", "type": "complementary" },
-        { "to_signal": "s6", "type": "ecosystem" }
+        { "to_signal": "s5", "type": "complementary" },
+        { "to_signal": "s3", "type": "ecosystem" }
       ],
-      "suggested_action": "Skim the section on relation types, then write down what your own conversation store does today when a newer message contradicts an older one. If the answer is 'nothing', you've just found your next Phase 9 issue.",
-      "landscape": { "domain": "AI SYSTEMS", "short": "MemoryLACE", "x": 700, "y": 140, "strength": "strong" }
+      "suggested_action": "Write down what your coach's 'helpful' means today. If you can't express it as two separate numbers — one for 'is this right about me' and one for 'did I change after reading it' — you've found the gap this paper is about.",
+      "landscape": { "domain": "HUMAN COGNITION", "short": "StudentSim", "x": 270, "y": 240, "strength": "strong" }
     },
     {
       "id": "s2",
-      "headline": "Memory as Rules, Not Transcripts",
-      "one_liner": "RuleMem induces reusable Horn clauses from conversation history and validates each one with a perplexity-consistency check",
+      "headline": "Artists Fine-Tuned the Model. Then Compared It to the Big One.",
+      "one_liner": "Nine workshops, 200+ practitioners, artist-led LoRA training — participants used their own model's output as a mirror to see what commercial generative AI had smoothed away",
       "signal_type": "NOW",
-      "chain": "AI SYSTEMS",
-      "why_you": "Two independent teams published this week concluding that storing conversation history verbatim is the wrong primitive. Yours currently stores it verbatim.",
-      "title": "RuleMem: Active Rule Memory for Long-Term Conversational Agents",
-      "source": "arXiv (cs.CL)",
-      "url": "https://arxiv.org/abs/2609.03915",
-      "date": "2026-09-03",
-      "summary": "Existing memory mechanisms mostly treat past information as passively stored facts, which leaves semantic gaps and makes reasoning unreliable. RuleMem instead induces reusable natural-language Horn clauses from historical interactions and validates them with a Rule Perplexity Consistency (RPC) mechanism. The induced rules then actively guide both evidence retrieval and answer generation, supplying explicit logical structure. Against 14 baselines on LoCoMo it achieved the highest accuracy, exceeding the baseline average by 27.47 points — a 54.3% relative improvement.",
-      "why_it_matters": "It reframes agent memory from 'retrieve the closest past utterance' to 'retrieve the pattern that held across many utterances' — a shift from similarity search to induction.",
-      "why_you_should_care": "Your rule engine is hand-written and deterministic; your LLM layer is probabilistic. RuleMem sits precisely in the gap: rules that are learned from data but still readable as sentences you can inspect.",
-      "radar_score": 0.84,
-      "domains": ["AI SYSTEMS"],
+      "chain": "CULTURAL DATA",
+      "why_you": "This is the rare cultural-AI paper where the communities being represented hold the tools, not just the dataset. And the method is a mirror: you can only see what a model omitted after you've trained one that includes it.",
+      "title": "Beyond Bias: Participatory and Reflective Approaches to Cultural AI",
+      "source": "arXiv (cs.HC)",
+      "url": "https://arxiv.org/abs/2609.05102",
+      "date": "2026-09-04",
+      "summary": "A collaboration with Goethe-Institut India presenting a participatory approach to cultural AI built from four practices: collaborative dataset creation, reflective AI tooling, artist-led model fine-tuning, and co-authored governance. Across 9 workshops with over 200 participants, artists and cultural practitioners worked with generative systems through experimentation, iteration and collaborative LoRA training, then used their own AI-generated outputs and visualisations as reflective interfaces for examining symbolism, memory, authorship and cultural context. Comparing off-the-shelf generative output against participant fine-tuned output let participants identify, concretely, the cultural detail that big-tech systems were missing. The contribution is a framework for cultural AI grounded in cultural integrity and reflective practice rather than bias mitigation alone.",
+      "why_it_matters": "It reframes the problem from 'debias the model' to 'give the community the ability to build and inspect their own' — a shift from correction to authorship. The reflective interface is the clever part: the artefact is the evidence.",
+      "why_you_should_care": "You came out of an art-track background into data science, and you work in clay. This is that exact vantage point described as a research method: the practitioner's eye as a diagnostic instrument for what a model fails to represent.",
+      "radar_score": 0.86,
+      "domains": ["CULTURAL DATA"],
       "connections": [
-        { "to_signal": "s1", "type": "convergence" }
+        { "to_signal": "s4", "type": "complementary" },
+        { "to_signal": "s6", "type": "ecosystem" }
       ],
-      "suggested_action": "Read how RPC decides whether an induced rule is trustworthy, then ask whether your deterministic fallback layer could be extended the same way — learned, but still inspectable.",
-      "landscape": { "domain": "AI SYSTEMS", "short": "RuleMem", "x": 785, "y": 205, "strength": "normal" }
+      "suggested_action": "Take the one visual tradition you know best. Write down three things a commercial image model consistently gets wrong about it. That list is a dataset annotation schema — and probably the beginning of a project.",
+      "landscape": { "domain": "CULTURAL DATA", "short": "Beyond Bias", "x": 300, "y": 440, "strength": "strong" }
     },
     {
       "id": "s3",
-      "headline": "You Miss AI Errors Because You Can't Reach What You Know",
-      "one_liner": "A 640-person field experiment: oversight fails on retrievability, not on knowledge or effort",
-      "signal_type": "LEARN",
-      "chain": "HUMAN COGNITION → AI SYSTEMS",
-      "why_you": "This is the concept to carry this week. It turns 'be careful with AI output' from a willpower problem into a design problem — and you are currently designing exactly that surface.",
-      "title": "Knowing Is Not Enough: Information Retrievability as a Precondition to Effective LLM Oversight",
-      "source": "arXiv (cs.HC / cs.AI)",
-      "url": "https://arxiv.org/abs/2609.01976",
+      "headline": "The Archive Question Nobody Checks First",
+      "one_liner": "1,800 human-verified document tasks, 1,600 of them deliberately unanswerable — and 15 leading multimodal models mostly answered anyway",
+      "signal_type": "NOW",
+      "chain": "DIGITAL HUMANITIES → AI SYSTEMS",
+      "why_you": "If you ever point a vision model at a scanned archive — and that is the most likely shape of your first real DH project — this is the failure mode you will hit before any other.",
+      "title": "Beyond Blind Compliance: Benchmarking Task Verification in OCR Reasoning",
+      "source": "arXiv (cs.CV)",
+      "url": "https://arxiv.org/abs/2609.00232",
       "date": "2026-09-02",
-      "summary": "Prior work locates oversight failures in users' capability to review LLM output or their engagement in doing so. This paper develops an alternative, retrieval-based account: error detection is more effective when oversight-relevant information is accessible at the moment of review. Across two randomized lab-in-the-field experiments with 640 customer-facing employees, self-generated explanations improved error detection and strengthened recall of verification-relevant reasoning, while cues that reactivate that reasoning helped sustain detection under repeated LLM use. The authors identify information retrievability as a distinct precondition for effective oversight, and generative encoding plus cue-supported reactivation as the mechanisms that build and sustain it.",
-      "why_it_matters": "It moves the fix from 'train users to be more careful' to 'design the review moment so the relevant reasoning is reachable' — an interface problem, not a discipline problem.",
-      "why_you_should_care": "Your coach returns seven sections including Evidence and Confidence. This is the empirical argument for why those fields must be visible at the moment you read the answer, not buried below it. It also explains a feeling you already have: you can know something and still fail to apply it while reviewing AI output.",
-      "radar_score": 0.89,
-      "domains": ["HUMAN COGNITION", "AI SYSTEMS"],
+      "summary": "Existing OCR and document-reasoning benchmarks quietly assume every task is valid and answerable. In real archives that assumption fails constantly: the question rests on illegible text, occluded evidence, a visual target that isn't there, a premise that contradicts the image, or a missing variable. The paper formalises this as OCR-grounded task verification — a model should decide whether the image premise, textual premise and question jointly define an executable task before answering. VeriOCRBench contains 1,800 human-verified samples drawn from 8 OCR datasets across 8 image domains: 1,600 trap-injected invalid tasks across 8 trap types and four verification dimensions (visual, contextual, factual, logical), plus 200 trap-free controls to measure over-refusal. Evaluating 15 leading MLLMs finds persistent blind compliance, weak root-cause diagnosis, and prompt-induced over-refusal. Code is released on GitHub.",
+      "why_it_matters": "It names a failure that benchmark design had structurally hidden: a model can be excellent at reading and terrible at noticing that the question can't be answered from what it read. Those are different capabilities, and only the first one is currently being scored.",
+      "why_you_should_care": "Archives are exactly the environment where invalid questions are the norm — damaged folios, missing pages, a catalogue entry that disagrees with the object. A transcription pipeline that never says 'this cannot be read' is worse than useless; it launders guesses into the record.",
+      "radar_score": 0.84,
+      "domains": ["DIGITAL HUMANITIES", "AI SYSTEMS"],
       "connections": [
-        { "to_signal": "s1", "type": "complementary" },
-        { "to_signal": "s5", "type": "design_implication" }
+        { "to_signal": "s5", "type": "complementary" },
+        { "to_signal": "s1", "type": "ecosystem" }
       ],
-      "suggested_action": "For one week: before accepting any AI-generated code or answer, write one sentence in your own words saying why you think it's right. That's generative encoding — the exact intervention the paper tested.",
-      "landscape": { "domain": "HUMAN COGNITION", "short": "Retrievability", "x": 270, "y": 240, "strength": "strong" }
+      "suggested_action": "Next time a model transcribes something for you, ask it one follow-up: 'which part of the image did you actually read that from?' Then check whether that part is legible. You will be surprised how often it names a region it cannot have read.",
+      "landscape": { "domain": "DIGITAL HUMANITIES", "short": "VeriOCRBench", "x": 700, "y": 480, "strength": "normal" }
     },
     {
       "id": "s4",
-      "headline": "Forty Years of Medieval Fragments, Released as a Dataset",
-      "one_liner": "The Princeton Geniza Project publishes its data essay and dataset: 35,855 documents, 1,802 people, 486 places — open, quarterly updated",
+      "headline": "The Model Knows Where Your Culture Is. Not Which Way It's Moving.",
+      "one_liner": "Two decades of World Values Survey data, 40 countries, four frontier models — accurate on the snapshot, systematically wrong on the trajectory",
       "signal_type": "NOW",
-      "chain": "CULTURAL DATA → DIGITAL HUMANITIES",
-      "why_you": "You keep wanting a real dataset to practise on that isn't Titanic or iris. This is one: everyday medieval Mediterranean life, openly licensed, documented by the people who built it.",
-      "title": "Princeton Geniza Project Datasets (Journal of Cultural Analytics, 11(3):1–35)",
-      "source": "Princeton Center for Digital Humanities",
-      "url": "http://cdh.princeton.edu/news/2026/09/01/journal-of-cultural-analytics-publishes-data-essay-on-cairo-geniza-bridging-medieval-middle-east-with-data-science-and-ai",
+      "chain": "CULTURAL DATA → AI SYSTEMS",
+      "why_you": "You are living inside a second culture while studying a third. This paper is the first serious measurement of whether AI systems can hold a culture as something that moves rather than something that sits still.",
+      "title": "Accurate in space, unreliable in time: how LLMs represent national cultural change",
+      "source": "arXiv (cs.CY)",
+      "url": "https://arxiv.org/abs/2609.01902",
       "date": "2026-09-01",
-      "summary": "A new data essay by Rebecca Sutton Koeser (CDH) and Marina Rustow (Near Eastern Studies / History) gives the first full account of the data behind the Princeton Geniza Project. The Cairo Geniza preserved hundreds of thousands of discarded Hebrew-script writings from everyday medieval life c. 950–1250, spanning Spain to Sumatra. PGP now holds 35,855 documents with descriptions, document types, languages and scripts, dates across multiple calendars, transcriptions, translations and citations — plus 1,802 people and 486 places. The essay documents forty years of history, from an IBM-funded 1986 pilot to the five-and-a-half-year rebuild, and explains the modelling decisions, including the many-to-many relationship between physical fragments and the documents written on them. The dataset is archived on Zenodo and updated quarterly; the essay is open access.",
-      "why_it_matters": "It's a rare case where a flagship humanities dataset publishes not just the data but the reasoning behind its schema — the part that's normally invisible, and the part most worth studying.",
-      "why_you_should_care": "The core modelling decision — one physical fragment can carry many documents, one document can span many fragments — is a genuinely interesting data-modelling problem, and it has the same shape as 'which memory does this fact belong to' in the MemoryLACE signal.",
-      "radar_score": 0.87,
-      "domains": ["CULTURAL DATA", "DIGITAL HUMANITIES"],
+      "summary": "Cultural alignment evaluation almost always treats culture as a single snapshot. This paper tests the missing dimension using more than two decades of World Values Survey data, comparing the real cultural trajectories of 40 countries on the Inglehart–Welzel cultural map against the trajectories produced by four state-of-the-art LLMs. Models generally place countries close to their most recent surveyed position — but that representation lags several years behind, captures only part of the observed magnitude of change, introduces movement where little occurred, and rarely reproduces reversals in a country's direction. The authors call the pattern temporal flattening, and argue snapshot accuracy gives an incomplete and flattering picture of cultural awareness, with consequences for evaluation, representational harm and governance.",
+      "why_it_matters": "It exposes a whole class of false confidence: being right about the present while being wrong about the trend. A model can pass every cultural benchmark currently in use and still be useless the moment you ask 'is this changing, and in which direction?'",
+      "why_you_should_care": "Two of your own domains collide here — cultural data and AI evaluation — and the failure has a shape you'll recognise from elsewhere: the model answers confidently because answering confidently is its default, not because the answer is supported.",
+      "radar_score": 0.88,
+      "domains": ["CULTURAL DATA", "AI SYSTEMS"],
       "connections": [
-        { "to_signal": "s6", "type": "ecosystem" },
-        { "to_signal": "s5", "type": "theme" }
+        { "to_signal": "s2", "type": "complementary" },
+        { "to_signal": "s5", "type": "ecosystem" }
       ],
-      "suggested_action": "Read the modelling-decisions section before you touch the data. Then download it and count documents by script — one query, and you already know something no single scholar could see by hand.",
-      "landscape": { "domain": "CULTURAL DATA", "short": "Geniza Data", "x": 300, "y": 440, "strength": "strong" }
+      "suggested_action": "Look up your own country and Italy on the Inglehart–Welzel map. Note where each sits. Then ask a model where each was twenty years ago — and check the answer against the survey. That gap is the paper in one experiment.",
+      "landscape": { "domain": "CULTURAL DATA", "short": "Temporal Flattening", "x": 232, "y": 505, "strength": "strong" }
     },
     {
       "id": "s5",
-      "headline": "The Algorithm Proposes, the Restorer Disposes",
-      "one_liner": "Jingdezhen's ceramic gene bank uses AI to match 16,000+ dragon-jar shards — and writes human judgment back into the next search",
-      "signal_type": "NOW",
-      "chain": "CULTURAL DATA",
-      "why_you": "You work in clay. This is the largest ceramics digitisation programme on earth saying out loud that AI has algorithmic ability but no judgment — and designing the whole loop around that fact.",
-      "title": "Jingdezhen Ancient Ceramics Gene Bank Gives Millennia-Old Shards a Digital Afterlife",
-      "source": "China News Service (中新社)",
-      "url": "https://www.chinanews.com.cn/sh/2026/09-04/10690243.shtml",
-      "date": "2026-09-04",
-      "summary": "More than 16,000 blue-and-white dragon-jar shards at the Jingdezhen Imperial Kiln Museum are receiving new 'identity cards': 3D scanning converts fracture surfaces, curvature and ornament into computable data, and AI proposes candidate neighbouring fragments. Then an experienced restorer judges — and that judgment is written back into the database to narrow the machine's next search. As restoration lead Hao Guojiang puts it, 'AI has algorithmic ability, but no judgment'; humans and AI are not a substitution relationship but a spiral of asking questions and correcting answers. The technique has been validated on 246 large dragon-jar fragments. The gene bank rests on roughly 20 million kiln specimens excavated over forty years, organised in an '8+X' schema, and 89 institutions including the British Museum and the Met are collaborating on a World Ceramics Interactive Map.",
-      "why_it_matters": "It's a deployed human-in-the-loop system where the human correction isn't an afterthought but the mechanism that shrinks the search space — a rare honest account of what AI actually does in conservation.",
-      "why_you_should_care": "Two things. First, it's your exact material — ceramics — treated as computable geometry. Second, 'AI has algorithmic ability but no judgment' is the same sentence the Georgia Tech architectural historian said yesterday, from a completely different field and continent.",
-      "radar_score": 0.85,
-      "domains": ["CULTURAL DATA"],
+      "headline": "Confidence Is Not a Reason",
+      "one_liner": "A four-tier reliance certificate grading one recommendation at a time — unstable, context-dependent, locally supported, broadly supported — and it turns out to be measuring something confidence scores don't",
+      "signal_type": "LEARN",
+      "chain": "AI SYSTEMS → HUMAN COGNITION",
+      "why_you": "This is the concept to carry this week. You already force your coach to emit a confidence number. This paper is the argument that the number is not telling you what you think it is.",
+      "title": "Epistemic Warrant for LLM Recommendations: Characterizing the Basis for Reliance When Ground Truth Is Unavailable",
+      "source": "arXiv (cs.AI)",
+      "url": "https://arxiv.org/abs/2609.04127",
+      "date": "2026-09-03",
+      "summary": "Most evaluation asks whether a model is reliable, calibrated or robust in general, or studies whether users trust it. This paper asks something narrower: what justifies relying on this particular recommendation, right now, when there is no ground truth to check it against. Borrowing epistemic warrant from epistemology, it defines a decision-level construct measuring how stable a model's preference is and over what scope that preference holds. It operationalises this as a four-tier reliance certificate for pairwise recommendations — unstable, context-dependent, locally supported, broadly supported — validated through known-groups tests that recover expert-prespecified orderings, and through systematic alignment with independent crowd-worker consensus. The key claim: warrant carries information distinct from verbalised confidence, and that difference is not explained by decision difficulty. A model can be confident and unstable at the same time.",
+      "why_it_matters": "It moves the question from 'how sure is the model' to 'how far can this answer be pushed before it breaks' — a property of the answer and its context, not a feeling the model reports about itself.",
+      "why_you_should_care": "Every coaching suggestion you generate carries a confidence field. If warrant and confidence are genuinely different measurements, your UI is showing the user the weaker of the two. The cheap version of the test — rephrase the question slightly and see whether the answer flips — is something you can run today against your own coach.",
+      "radar_score": 0.90,
+      "domains": ["AI SYSTEMS", "HUMAN COGNITION"],
       "connections": [
-        { "to_signal": "s4", "type": "theme" },
-        { "to_signal": "s3", "type": "design_implication" }
+        { "to_signal": "s1", "type": "complementary" },
+        { "to_signal": "s3", "type": "complementary" }
       ],
-      "suggested_action": "Note the loop shape: machine proposes → human judges → judgment becomes data. Sketch it next to your rule-engine fallback. They're the same loop wearing different clothes.",
-      "landscape": { "domain": "CULTURAL DATA", "short": "Ceramic Gene Bank", "x": 225, "y": 500, "strength": "normal" }
+      "suggested_action": "Take one question your coach answers confidently. Ask it five times with small variations in phrasing. Count the flips. That count is a rough warrant tier — and if it's above zero, your confidence number is lying to you by omission.",
+      "landscape": { "domain": "AI SYSTEMS", "short": "Epistemic Warrant", "x": 700, "y": 140, "strength": "strong" }
     },
     {
       "id": "s6",
-      "headline": "Digitization Breaks Relationships. Someone Is Fixing That.",
-      "one_liner": "A Purdue project uses generative AI to restore what scanning destroys — who is speaking, who a letter was sent to — and will publish the workflow openly",
+      "headline": "Three Days to Tell Europe What AI Should Do With Culture",
+      "one_liner": "The Commission's call for evidence on an AI strategy for the cultural and creative sectors closes 11 September — open to anyone, in every official EU language",
       "signal_type": "OPPORTUNITY",
-      "chain": "DIGITAL HUMANITIES",
-      "why_you": "This is a named, funded, reproducible research problem sitting exactly on your intersection — and unlike most, it's publishing its method, not just its results.",
-      "title": "Structural Recovery for Digitized Historical Archives (IMLS Early Career Research project, Purdue)",
-      "source": "Purdue Libraries and School of Information Studies",
-      "url": "https://blogs.lib.purdue.edu/news/2026/09/01/purdue-libraries-and-school-of-information-studies-faculty-advance-ai-innovation-across-research-teaching-and-knowledge-stewardship",
-      "date": "2026-09-01",
-      "summary": "Spencer Stewart's project starts from an observation most digitization programmes ignore: scanning preserves the text but strips the relationships — identifying who is speaking in a transcript, or who the recipient of a letter was. The project uses generative AI to build a structural recovery framework that automatically identifies and reconstructs those relationships while maintaining archival accuracy, transparency and accountability, tested through three case studies with Purdue Archives and Special Collections. It will produce a generalizable, reproducible workflow plus open online learning modules. In the same announcement, Gang Shao's AIMI project builds an agentic infrastructure in which multiple agents find metadata gaps, retrieve authoritative vocabularies, validate against schemas, and document provenance, confidence measures and decision processes.",
-      "why_it_matters": "It names a failure mode of digitization — the scan is not the record — and treats relationship recovery as a first-class research problem rather than a cleanup chore.",
-      "why_you_should_care": "Combined with the Geniza dataset, this is a complete beginner's setup: an open dataset with exactly this problem, and an open method being published for exactly this problem. You don't need a lab, a supervisor, or permission to start.",
-      "radar_score": 0.83,
+      "chain": "DIGITAL HUMANITIES → CULTURAL DATA",
+      "why_you": "You are an EU resident, a data science student, and a former art student with a stake in cultural heritage. This is a consultation that explicitly wants exactly that combination — and almost no students ever reply to these.",
+      "title": "Call for evidence: Artificial intelligence strategy for the cultural and creative sectors",
+      "source": "European Commission — Have Your Say",
+      "url": "https://ec.europa.eu/info/law/better-regulation/have-your-say/initiatives/18592-Artificial-intelligence-strategy-for-the-cultural-and-creative-sectors_en",
+      "date": "2026-07-29",
+      "summary": "The European Commission is collecting evidence for a dedicated AI strategy for the cultural and creative sectors, due in the first half of 2027, under the Culture Compass for Europe. The call asks how AI can complement rather than replace human creativity, widen access to culture and knowledge, and support a fair and competitive European creative economy. Three pillars are already set: innovation and competitiveness, fair business models and ethical use, and capacity building for the digital transition. It sits alongside a Common European data space for cultural heritage intended to make over 30 million licensed digital cultural objects available for AI training by 2030. The consultation is open to anyone — artists, creators, researchers, public authorities and members of the public — in all EU languages, and closes 11 September 2026.",
+      "why_it_matters": "Whatever gets written into this strategy will shape what European cultural institutions are allowed and funded to do with AI for the next decade — including the archives and museums you'll be asking for data.",
+      "why_you_should_care": "This is the rare policy moment where being a first-year undergraduate is not a disqualification: consultations count individual responses, and a concrete cross-cultural argument from someone actually living between two cultures is more useful than another position paper from a collecting society.",
+      "radar_score": 0.85,
       "domains": ["DIGITAL HUMANITIES", "CULTURAL DATA"],
       "connections": [
-        { "to_signal": "s4", "type": "ecosystem" },
-        { "to_signal": "s1", "type": "ecosystem" }
+        { "to_signal": "s2", "type": "ecosystem" },
+        { "to_signal": "s4", "type": "ecosystem" }
       ],
-      "suggested_action": "Bookmark it and set a reminder to watch for the learning modules. Meanwhile, open the Geniza data and find one letter where the recipient is ambiguous — you'll feel the problem in about five minutes.",
-      "landscape": { "domain": "DIGITAL HUMANITIES", "short": "Structural Recovery", "x": 680, "y": 510, "strength": "normal" }
+      "suggested_action": "Before 11 September, write 300 words from your own position: what AI should be allowed to do with digitised cultural material, and who should get to decide. Submit it, then keep the copy — in two years it's the opening paragraph of a research statement.",
+      "landscape": { "domain": "DIGITAL HUMANITIES", "short": "EU Consultation", "x": 660, "y": 545, "strength": "normal" }
     }
   ],
   "pattern": {
     "label": "PATTERN EMERGING",
-    "statement": "Four unrelated teams spent this week solving the same problem from different ends: knowing something is not the same as being able to reach it when it matters. A memory framework for LLM agents models merge, supersession and contradiction explicitly instead of storing facts flat. A second one induces reusable rules rather than saving statements. An HCI study with 640 employees finds reviewers miss AI errors not because they lack knowledge but because the relevant reasoning isn't retrievable at the moment of review. And archivists are hitting the identical failure in cultural data — digitization preserves the object but strips the relationships, so nobody can tell who wrote to whom. Different fields, one discovery: memory is not storage. It's provenance plus retrievability.",
-    "contributing": ["s1", "s2", "s3", "s4", "s6"]
+    "statement": "Today's signals are not about accuracy. They are about the fact that a model's default setting is to answer. A document benchmark finds that fifteen leading multimodal systems will confidently read an archive image and answer a question the image cannot support. A cultural-values study finds four frontier models placing countries correctly on the map while being quietly wrong about the direction each is travelling. A tutoring paper has to invent a simulated student because nothing in the loop can otherwise tell whether the advice landed. An epistemology paper has to invent a warrant certificate because a model's stated confidence turns out to be independent of whether the answer survives a small change in phrasing. And the artists in the Goethe-Institut workshops only discovered what commercial systems were missing after they trained a model of their own to compare against. Four fields, one finding: the failure is not that models are wrong, it's that they are compliant. Which means the fix is not better answers — it's building the test the answer has to survive.",
+    "contributing": ["s1", "s2", "s3", "s4", "s5"]
   },
   "open_question": {
     "label": "A QUESTION WORTH CARRYING",
-    "text": "If what actually fails is retrieval at the moment you need it — not knowledge itself — then what should an AI system hand back to you: the answer, or the reasoning you'd need in order to catch the answer being wrong?"
+    "text": "If a system's instinct is always to answer, then what should it cost it to answer — and who gets to set that price: the model, the engineer, or the person who has to live with being wrong?"
   },
   "editorial": {
     "world": [
       {
-        "headline": "Agent Memory Learns to Track What Changed",
-        "sub": "MemoryLACE models merge, supersession and contradiction — and cuts runtime 66.6% versus the strongest reflective-memory baseline",
-        "why": "The design conclusion is cheaper than expected: you don't need a knowledge graph, you need an evidence lifecycle",
-        "source_url": "https://arxiv.org/abs/2609.03201",
-        "source_name": "arXiv (cs.CL)"
+        "headline": "AI Tutors Have Someone to Practise On",
+        "sub": "StudentSim trains one simulator per student, scored on fidelity and teachability separately — and as an RL reward source it lifts tutor accuracy from 75.7% to 90.5%",
+        "why": "It splits 'sounds like you' from 'can be moved by instruction' — two numbers, and only the corner where both are high is useful",
+        "source_url": "https://arxiv.org/abs/2609.01591",
+        "source_name": "arXiv (Microsoft Research & UIUC)"
       },
       {
-        "headline": "Forty Years of Medieval Fragments, Released",
-        "sub": "Princeton publishes the Geniza dataset — 35,855 documents, 1,802 people, 486 places, open and updated quarterly",
-        "why": "A flagship humanities dataset that publishes its schema reasoning, not just its rows — the part worth studying",
-        "source_url": "http://cdh.princeton.edu/news/2026/09/01/journal-of-cultural-analytics-publishes-data-essay-on-cairo-geniza-bridging-medieval-middle-east-with-data-science-and-ai",
-        "source_name": "Princeton Center for Digital Humanities"
+        "headline": "Right About Today, Wrong About the Direction",
+        "sub": "Twenty years of World Values Survey data across 40 countries: four frontier models place cultures accurately but lag years behind and miss every reversal",
+        "why": "It names a failure that passes every existing cultural benchmark — being correct on the snapshot while being wrong on the trend",
+        "source_url": "https://arxiv.org/abs/2609.01902",
+        "source_name": "arXiv (cs.CY)"
       },
       {
-        "headline": "The Algorithm Proposes, the Restorer Disposes",
-        "sub": "Jingdezhen's gene bank matches 16,000+ ceramic shards with AI, then writes the restorer's judgment back into the search",
-        "why": "Human correction isn't the safety net here — it's the mechanism that shrinks the search space",
-        "source_url": "https://www.chinanews.com.cn/sh/2026/09-04/10690243.shtml",
-        "source_name": "China News Service (中新社)"
+        "headline": "Europe Is Asking What AI May Do With Culture",
+        "sub": "The Commission's call for evidence closes 11 September — open to any individual, in every EU language, feeding a strategy due in 2027",
+        "why": "Whatever lands in that strategy governs what European archives and museums can do with AI for a decade — including the ones you'll want data from",
+        "source_url": "https://ec.europa.eu/info/law/better-regulation/have-your-say/initiatives/18592-Artificial-intelligence-strategy-for-the-cultural-and-creative-sectors_en",
+        "source_name": "European Commission — Have Your Say"
       }
     ],
     "think": [
       {
-        "concept": "Information Retrievability",
-        "question": "Why do you miss AI's errors even when you actually know the material?",
-        "explain": "Oversight failure usually gets blamed on skill or laziness. This paper argues the real precondition is whether the reasoning you'd need is reachable at the moment of review. Two mechanisms build it: generating your own explanation (generative encoding), and cues that reactivate that reasoning later (cue-supported reactivation).",
-        "why": "It converts 'be more careful with AI' from a character flaw into an interface requirement — and you're the one designing that interface.",
-        "source_url": "https://arxiv.org/abs/2609.01976"
+        "concept": "Temporal Flattening",
+        "question": "Can a system be right about where a culture is and still wrong about where it's going?",
+        "explain": "Yes, and systematically. Measured against two decades of survey data, models place countries near their latest recorded position but lag several years, understate the size of real change, invent movement where there was none, and almost never reproduce a reversal in direction. Snapshot accuracy and trajectory accuracy are different capabilities, and only the first is currently evaluated.",
+        "why": "It generalises well beyond culture: anywhere a model reports a state but not a rate, you are being handed a photograph and reading it as a film.",
+        "source_url": "https://arxiv.org/abs/2609.01902"
       },
       {
-        "concept": "Provenance & Supersession",
-        "question": "What does a fact owe you about its own history?",
-        "explain": "A stored fact without an origin and a history is indistinguishable from a guess. Supersession is the relation that says 'this replaced that' — and it's the one flat memory stores quietly throw away. Agents need it (MemoryLACE), archives need it (structural recovery), and your Evidence ID requirement is a version of the same instinct.",
-        "why": "It's the rare idea that is simultaneously an engineering constraint, an archival principle, and a study habit.",
-        "source_url": "https://arxiv.org/abs/2609.03201"
+        "concept": "Fidelity vs. Responsiveness",
+        "question": "What's the difference between a model that sounds like you and one that can be taught?",
+        "explain": "Behavioral fidelity measures whether a simulator reproduces what you'd do unaided — including your specific mistakes. Guidance responsiveness measures whether, after reading an explanation, it moves toward the target. High fidelity with low responsiveness replays your errors forever; high responsiveness with low fidelity is obedient but starts from the wrong person. They are separate axes and can't be traded against each other.",
+        "why": "It's the cleanest available test for any personalisation claim, including your own coach's: does it know you, and can it change you? Two questions, never one.",
+        "source_url": "https://arxiv.org/abs/2609.01591"
       }
     ],
     "look": {
-      "subject": "A Geniza Fragment, Read as Data",
+      "subject": "The Map That Made Culture Measurable",
       "look_for": [
-        "Text laid out at more than one angle on a single sheet — a physical object that resists one clean reading order",
-        "The gap between 'a fragment' and 'a document': one piece of parchment can carry several, one document can span several pieces",
-        "What has to be true of a database before this becomes searchable rather than merely photographed"
+        "Two axes only — survival versus self-expression, traditional versus secular-rational — and forty countries reduced to positions on them",
+        "How tightly the countries cluster by region, and what that clustering makes invisible about the spread inside any one country",
+        "Where the arrows would go: this is a static plot of a moving thing, and the paper's whole argument is that the arrows are missing"
       ],
-      "visit_url": "https://geniza.princeton.edu/",
-      "visit_name": "Princeton Geniza Project",
-      "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6f/Bab_voc_fragment_2.jpg/960px-Bab_voc_fragment_2.jpg"
+      "visit_url": "https://en.wikipedia.org/wiki/Inglehart%E2%80%93Welzel_cultural_map_of_the_world",
+      "visit_name": "Inglehart–Welzel cultural map of the world",
+      "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6a/Inglehart_Values_Map.svg/960px-Inglehart_Values_Map.svg.png"
     },
     "discover": {
-      "name": "Marina Rustow",
+      "name": "Lev Manovich",
       "roles": [
-        "Professor of Near Eastern Studies & History, Princeton",
-        "Director, Princeton Geniza Lab"
+        "Distinguished Professor, CUNY Graduate Center",
+        "Founder and director, Cultural Analytics Lab"
       ],
-      "desc": "A historian of the medieval Islamic and Jewish Mediterranean who spent years turning hundreds of thousands of scattered Geniza fragments into a queryable corpus — and who then published the reasoning behind the data model, not just the data.",
-      "why": "She's a working model of the thing you're trying to become: someone who refuses to choose between humanistic questions and computational rigour, and who treats the schema as an argument rather than plumbing.",
-      "tags": ["Cairo Geniza", "Medieval Mediterranean", "Digital Humanities", "Open Data"],
-      "link_url": "https://en.wikipedia.org/wiki/Marina_Rustow"
+      "desc": "An artist, author and theorist of digital culture who helped establish four fields in sequence: new media studies, software studies, cultural analytics, and AI aesthetics. His central move was to insist that culture at scale — a million manga pages, a city's worth of photographs, a century of film frames — is a dataset you can actually look at, and that looking at it tells you things close reading cannot. His current work is on generative media, AI culture and digital art.",
+      "why": "He is the person who made today's cultural-values paper possible in principle. Putting forty countries on two axes and arguing that they should be represented as trajectories rather than points is the direct descendant of the tradition he started. He's also a working answer to a question you carry: it is possible to move from art into computation without surrendering either one.",
+      "tags": ["Cultural Analytics", "AI Aesthetics", "Digital Culture", "Data-Driven Humanities"],
+      "link_url": "https://en.wikipedia.org/wiki/Lev_Manovich",
+      "portrait_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/93/Lev_Manovich_%E2%80%94_How_to_analyze_culture_using_social_networks.jpg/500px-Lev_Manovich_%E2%80%94_How_to_analyze_culture_using_social_networks.jpg"
     },
     "explore": {
-      "question": "What would you see in 35,855 medieval documents that no single scholar could?",
-      "start_url": "https://geniza.princeton.edu/",
-      "start_name": "Princeton Geniza Project",
+      "question": "If the European Commission asked you — not your university, you — what AI should be allowed to do with culture, what would you actually say?",
+      "start_url": "https://ec.europa.eu/info/law/better-regulation/have-your-say/initiatives/18592-Artificial-intelligence-strategy-for-the-cultural-and-creative-sectors_en",
+      "start_name": "Have Your Say — AI strategy for cultural and creative sectors",
       "trail": [
         {
-          "title": "Read the data essay's modelling-decisions section first",
-          "hint": "The many-to-many relation between fragments and documents is the whole difficulty. Understand it before you query anything."
+          "title": "Read the three pillars before you write anything",
+          "hint": "Innovation, fair business models and ethical use, capacity building. Your answer lands harder if it's addressed to a pillar rather than floating free."
         },
         {
-          "title": "Download the dataset from Zenodo (DOI 10.5281/zenodo.18716581)",
-          "hint": "CC-licensed, updated quarterly. Don't over-prepare — just get the file locally."
+          "title": "Pick the one thing only you can testify to",
+          "hint": "Not copyright theory — everyone is writing that. You are a Chinese art-track student in Venice using AI daily. What breaks, concretely, when a model meets your material?"
         },
         {
-          "title": "Count documents by script, then by document type",
-          "hint": "Two groupbys. Write them yourself, don't ask. This is the read → modify → write loop on real data."
+          "title": "Write 300 words, in English, plain and specific",
+          "hint": "One observation, one claim, one recommendation. Consultation responses are read for evidence, not for eloquence."
         },
         {
-          "title": "Pick one person from the 1,802 and trace their appearances",
-          "hint": "The moment a name becomes a pattern across decades is the moment the dataset stops being abstract."
+          "title": "Submit before 11 September and keep your own copy",
+          "hint": "The deadline is real and it's three days out. The copy is the part that compounds — it's the seed of a research statement later."
         }
       ],
-      "why": "This is a first data-science project whose subject is medieval Mediterranean life instead of iris flowers — and the modelling problem at its centre is the same one the agent-memory papers are wrestling with."
+      "why": "This is the cheapest possible way to find out whether you have a position. Most people discover they don't only when asked to write it down — and the European Commission is asking, in your name, in your city, this week."
     },
     "make": {
-      "tool": "A Provenance Log in 30 Lines",
-      "does": "A tiny Python store where every fact is a dict carrying source, timestamp and an optional supersedes field — and where get() refuses to return a fact without its origin attached",
-      "why": "You're building a coaching layer that must cite Evidence IDs and never hallucinate. Writing the storage primitive yourself is the fastest way to feel why 'every fact carries its provenance' is a design constraint, not a nice-to-have.",
-      "try": "Start with add_fact(text, source). Then add supersede(old_id, new_id). Finally, make get() raise an error if a fact has no source — and notice how much of your design suddenly has to be explicit.",
-      "link_url": "https://arxiv.org/abs/2609.03201"
+      "tool": "A Stability Probe in 25 Lines",
+      "does": "A tiny Python function that takes one question, sends it five times with small variations in phrasing, and counts how many times the substantive answer changes. It returns a rough warrant tier: zero flips is locally supported, one or two is context-dependent, three or more means the model never had an answer, it had a mood.",
+      "why": "You're building a coaching layer that attaches a confidence number to every suggestion. Writing the cheap version of epistemic warrant yourself is the fastest way to feel the difference between a model being sure and a model being stable — and to see which one your UI is actually showing.",
+      "try": "Start with ask(question) -> answer. Then add paraphrase(question, n=5) using a fixed set of rewording templates. Then compare: normalise whitespace and lower-case, count distinct answers. Run it on one question you believe the answer to, then on one you don't — and notice that the confidence number barely moves between them.",
+      "link_url": "https://arxiv.org/abs/2609.04127"
     }
   }
 };
