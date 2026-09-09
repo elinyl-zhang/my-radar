@@ -733,255 +733,322 @@
   var feedCache = null;
 var feed = {
   "$schema": "radar-daily-feed-v2",
-  "date": "2026-09-08",
+  "date": "2026-09-09",
   "territories": [
-    { "name": "AI SYSTEMS", "x": 726, "y": 168 },
-    { "name": "HUMAN COGNITION", "x": 258, "y": 208 },
-    { "name": "CULTURAL DATA", "x": 292, "y": 438 },
-    { "name": "DIGITAL HUMANITIES", "x": 704, "y": 476 }
+    { "name": "AI SYSTEMS", "x": 700, "y": 140 },
+    { "name": "HUMAN COGNITION", "x": 270, "y": 240 },
+    { "name": "CULTURAL DATA", "x": 300, "y": 440 },
+    { "name": "DIGITAL HUMANITIES", "x": 680, "y": 510 }
   ],
   "signals": [
     {
       "id": "s1",
-      "headline": "AI Tutors Finally Have Someone to Practise On",
-      "one_liner": "Microsoft and UIUC train one simulator per student, scored on two axes separately: does it still sound like them, and can it actually be taught",
+      "headline": "A Number System No Model Can Read",
+      "one_liner": "Bangladeshi land titles record area in a base-16 positional fraction with its own Unicode glyphs; six multimodal LLMs return zero correct answers on 39% of question categories, and on arithmetic every model that emits a number loses to a constant-mean guess",
       "signal_type": "NOW",
-      "chain": "HUMAN COGNITION → AI SYSTEMS",
-      "why_you": "Your coaching layer can generate advice. It cannot yet tell whether the advice changed anything. This paper names that missing piece and builds a stand-in for it.",
-      "title": "StudentSim: Training LLM-based Student Simulators",
-      "source": "arXiv",
-      "url": "https://arxiv.org/abs/2609.01591",
-      "date": "2026-09-01",
-      "summary": "AI tutors need student feedback to improve, but real student feedback is slow, expensive and sparse — in the L2 writing corpus the median learner produced only 3 essays, and over two-thirds produced 5 or fewer. StudentSim trains a per-student simulator in two stages: first pooled across many students to learn domain-level shared patterns, then specialised on one student's own records. It evaluates on two separate axes rather than one: behavioral fidelity (does it reproduce what this student would actually do unaided) and guidance responsiveness (after reading the tutor's guidance, does it move toward the target). Across chess, L2 English writing and mathematics with 60 real students, it beats GPT-5.4, GPT-4o and the state-tracking model Maia2 on both axes. Crucially, when the frozen simulator is used as the reward source for RL on a tutor policy, expert blind rating puts the resulting tutor first on accuracy (90.5% vs 75.7% without RL), guidance quality and personalisation.",
-      "why_it_matters": "It separates two things that are usually collapsed into one number: sounding like the person, and being movable by instruction. High fidelity with low responsiveness just replays errors; high responsiveness with low fidelity is obedient but starts from the wrong place. Only the corner matters.",
-      "why_you_should_care": "This is the exact evaluation problem your Academic Coach has. You already require Evidence ID, reasoning and confidence on every suggestion — but you have no test for whether the suggestion worked. Behavioral fidelity and guidance responsiveness are two metrics you could actually implement against your own conversation store.",
-      "radar_score": 0.91,
-      "domains": ["HUMAN COGNITION", "AI SYSTEMS"],
+      "chain": "CULTURAL DATA → AI SYSTEMS",
+      "why_you": "You are about to spend three years reading benchmark scores. This is the paper to keep beside them: it shows a capability can be entirely absent while the average still looks reassuringly non-zero.",
+      "title": "KhatianDoc: A Human-Verified Benchmark Diagnosing Multimodal LLM Failure on Bengali Legal Land Records",
+      "source": "arXiv (cs.CL)",
+      "url": "https://arxiv.org/abs/2609.03597",
+      "date": "2026-09-03",
+      "summary": "Land ownership in Bangladesh is recorded in RS Khatians, whose area fields use Ana-Ganda-Kora-Kranti-Til, a base-16 positional fraction system with dedicated Unicode glyphs, no mainstream font, and no coverage in any OCR pipeline or tokenizer. The authors built a four-task benchmark from 107 real records from the Munshiganj land office: symbol recognition, base-16-to-decimal conversion, structured field extraction, and legal question answering over 1,634 QA pairs. Ground truth was transcribed by hand and verified to full agreement by a land-law practitioner, then anonymised through positional tokens that preserve the referential distinctions multi-hop questions depend on. Six multimodal LLMs from 8B to 72B+ were evaluated under a fixed zero-shot protocol. Five QA categories, 39.3% of the stratified set, returned zero correct answers from every model. On the arithmetic task, every model that emitted a number scored below a constant-mean baseline, with exact- and near-match scores coinciding: decorrelation, not approximation. The authors also audit their own metrics, correcting a refusal-scoring bug and flagging one inflated metadata figure as an upper bound.",
+      "why_it_matters": "The paper is explicit that this is not a performance gap but the absence of a capability. That distinction is normally invisible, because a benchmark reports one number averaged across categories where the model has some competence and categories where it has none. The constant-mean baseline is the instrument that makes the difference legible: if predicting the average beats your model, the model is not doing the task weakly, it is not doing it at all.",
+      "why_you_should_care": "Two habits fall out and both are cheap. First, never read a benchmark average without asking what the floor is: a constant, a majority class, a random draw. Second, notice where this failure lives. Not in the model's reasoning but in the tokenizer and the font pipeline. The record was machine-readable in principle and unreachable in practice because nobody built the glyphs. That is a cultural-data problem wearing an AI costume, and it is exactly the kind your intersection is supposed to be good at noticing.",
+      "radar_score": 0.87,
+      "domains": ["CULTURAL DATA", "AI SYSTEMS"],
       "connections": [
-        { "to_signal": "s5", "type": "complementary" },
-        { "to_signal": "s3", "type": "ecosystem" }
+        { "to_signal": "s7", "type": "complementary" },
+        { "to_signal": "s4", "type": "contrast" }
       ],
-      "suggested_action": "Write down what your coach's 'helpful' means today. If you can't express it as two separate numbers — one for 'is this right about me' and one for 'did I change after reading it' — you've found the gap this paper is about.",
-      "landscape": { "domain": "HUMAN COGNITION", "short": "StudentSim", "x": 270, "y": 240, "strength": "strong" }
+      "suggested_action": "Take one task you currently trust a model with — translating a Chinese source, pulling a table out of a PDF, summarising a paper you haven't read — and write the dumbest possible baseline for it. Constant, majority label, first row. Run both twenty times on cases you can verify yourself. If the baseline wins, you have not found a weak model; you have found a missing capability, and those need different fixes.",
+      "landscape": {
+        "domain": "CULTURAL DATA",
+        "short": "KhatianDoc",
+        "x": 300,
+        "y": 440,
+        "strength": "strong"
+      }
     },
     {
       "id": "s2",
-      "headline": "Artists Fine-Tuned the Model. Then Compared It to the Big One.",
-      "one_liner": "Nine workshops, 200+ practitioners, artist-led LoRA training — participants used their own model's output as a mirror to see what commercial generative AI had smoothed away",
+      "headline": "An Agent Can Keep Its Memory and Still Forget",
+      "one_liner": "Hold the memory store fixed and swap the model: fixed-schema knowledge graphs shift by 0.0004, model-written notes swing +9.91 or −13.28 points, and repair without the raw source fails in all 48 cases",
       "signal_type": "NOW",
-      "chain": "CULTURAL DATA",
-      "why_you": "This is the rare cultural-AI paper where the communities being represented hold the tools, not just the dataset. And the method is a mirror: you can only see what a model omitted after you've trained one that includes it.",
-      "title": "Beyond Bias: Participatory and Reflective Approaches to Cultural AI",
-      "source": "arXiv (cs.HC)",
-      "url": "https://arxiv.org/abs/2609.05102",
+      "chain": "AI SYSTEMS → HUMAN COGNITION",
+      "why_you": "Phase 9 of your coach is, in this paper's vocabulary, a compressed-notes store with a schema bolted on. The paper tells you which half survives your next model upgrade and which half doesn't — before you finish building it.",
+      "title": "Does Your Agent's Memory Survive a Model Upgrade? A Controlled Study of Memory Portability",
+      "source": "arXiv (cs.AI)",
+      "url": "https://arxiv.org/abs/2609.05339",
       "date": "2026-09-04",
-      "summary": "A collaboration with Goethe-Institut India presenting a participatory approach to cultural AI built from four practices: collaborative dataset creation, reflective AI tooling, artist-led model fine-tuning, and co-authored governance. Across 9 workshops with over 200 participants, artists and cultural practitioners worked with generative systems through experimentation, iteration and collaborative LoRA training, then used their own AI-generated outputs and visualisations as reflective interfaces for examining symbolism, memory, authorship and cultural context. Comparing off-the-shelf generative output against participant fine-tuned output let participants identify, concretely, the cultural detail that big-tech systems were missing. The contribution is a framework for cultural AI grounded in cultural integrity and reflective practice rather than bias mitigation alone.",
-      "why_it_matters": "It reframes the problem from 'debias the model' to 'give the community the ability to build and inspect their own' — a shift from correction to authorship. The reflective interface is the clever part: the artefact is the evidence.",
-      "why_you_should_care": "You came out of an art-track background into data science, and you work in clay. This is that exact vantage point described as a research method: the practitioner's eye as a diagnostic instrument for what a model fails to represent.",
-      "radar_score": 0.86,
-      "domains": ["CULTURAL DATA"],
+      "summary": "The authors take 48 synthetic agent histories with randomised answer codes and preserve the same history in four formats: verbatim long-context reading, chunked retrieval-augmented generation, model-compressed natural-language notes, and a fixed-schema knowledge graph. They then swap the writer or reader model and measure what survives. Fixed-schema graphs transfer almost perfectly, with accuracy changing by +0.0004 ± 0.0020 after a writer swap. Compressed notes are strongly model-coupled, shifting asymmetrically by +9.91 or −13.28 percentage points depending on migration direction, so A→B tells you nothing about B→A. In RAG, a 50/50 mixed embedding index recovers only 4.96 points of the 11.90-point gain available from full re-embedding — mixing vector spaces is close to worst-of-both. Diagnostic decomposition attributes 80% of the notes deficit to information lost during initial compression, and 81% of the RAG deficit to retrieval failure: the two formats break in different places. Finally, store-only repair of compressed notes fails to reach a 90% recovery target in all 48 cases, while retaining the raw source history enables recovery in 34 of 48 for one tested direction.",
+      "why_it_matters": "It reframes agent memory from a feature into a lifecycle object with a migration cost. The failure is silent — no error, no crash, the store still returns results, accuracy simply drops — which makes it the kind of bug that survives a demo and dies after deployment. It also reframes compression: summarising is not free storage, it is lossy encoding whose cost is deferred to whoever upgrades the model next.",
+      "why_you_should_care": "Your Phase 9 spec already insists on Evidence ID, reasoning and confidence on every suggestion, and on a rule-engine fallback. This paper is the argument for a fourth requirement you have not written down: keep the raw turn history even after the structured summary exists. The summary is what gets read; the raw history is what lets you rebuild when the model changes. Store-only repair failing 48 times out of 48 is the entire case in one number.",
+      "radar_score": 0.85,
+      "domains": ["AI SYSTEMS", "HUMAN COGNITION"],
       "connections": [
-        { "to_signal": "s4", "type": "complementary" },
-        { "to_signal": "s6", "type": "ecosystem" }
+        { "to_signal": "s3", "type": "ecosystem" },
+        { "to_signal": "s5", "type": "contrast" }
       ],
-      "suggested_action": "Take the one visual tradition you know best. Write down three things a commercial image model consistently gets wrong about it. That list is a dataset annotation schema — and probably the beginning of a project.",
-      "landscape": { "domain": "CULTURAL DATA", "short": "Beyond Bias", "x": 300, "y": 440, "strength": "strong" }
+      "suggested_action": "Open your Phase 9 spec and add one line under persistence: raw conversation history is append-only and is never deleted by a compression step, even when the structured record is complete. Then mark which of your coach's fields are fixed-schema and which are free text. The paper says only the first kind is portable.",
+      "landscape": {
+        "domain": "AI SYSTEMS",
+        "short": "Memory portability",
+        "x": 700,
+        "y": 140,
+        "strength": "strong"
+      }
     },
     {
       "id": "s3",
-      "headline": "The Archive Question Nobody Checks First",
-      "one_liner": "1,800 human-verified document tasks, 1,600 of them deliberately unanswerable — and 15 leading multimodal models mostly answered anyway",
+      "headline": "Agents Building Agents: 23.9% Against an Expert's 82.2%",
+      "one_liner": "Hand a coding agent the records, a client with requirements and a production API, and ask it to deliver a working service agent — the strongest configuration passes under a quarter of held-out user simulations, and the failure is one any junior consultant would recognise",
       "signal_type": "NOW",
-      "chain": "DIGITAL HUMANITIES → AI SYSTEMS",
-      "why_you": "If you ever point a vision model at a scanned archive — and that is the most likely shape of your first real DH project — this is the failure mode you will hit before any other.",
-      "title": "Beyond Blind Compliance: Benchmarking Task Verification in OCR Reasoning",
-      "source": "arXiv (cs.CV)",
-      "url": "https://arxiv.org/abs/2609.00232",
-      "date": "2026-09-02",
-      "summary": "Existing OCR and document-reasoning benchmarks quietly assume every task is valid and answerable. In real archives that assumption fails constantly: the question rests on illegible text, occluded evidence, a visual target that isn't there, a premise that contradicts the image, or a missing variable. The paper formalises this as OCR-grounded task verification — a model should decide whether the image premise, textual premise and question jointly define an executable task before answering. VeriOCRBench contains 1,800 human-verified samples drawn from 8 OCR datasets across 8 image domains: 1,600 trap-injected invalid tasks across 8 trap types and four verification dimensions (visual, contextual, factual, logical), plus 200 trap-free controls to measure over-refusal. Evaluating 15 leading MLLMs finds persistent blind compliance, weak root-cause diagnosis, and prompt-induced over-refusal. Code is released on GitHub.",
-      "why_it_matters": "It names a failure that benchmark design had structurally hidden: a model can be excellent at reading and terrible at noticing that the question can't be answered from what it read. Those are different capabilities, and only the first one is currently being scored.",
-      "why_you_should_care": "Archives are exactly the environment where invalid questions are the norm — damaged folios, missing pages, a catalogue entry that disagrees with the object. A transcription pipeline that never says 'this cannot be read' is worse than useless; it launders guesses into the record.",
-      "radar_score": 0.84,
-      "domains": ["DIGITAL HUMANITIES", "AI SYSTEMS"],
+      "chain": "HUMAN COGNITION → AI SYSTEMS",
+      "why_you": "The three failure modes the paper names — shallow queries instead of reading the records, almost no communication with the client, shipping the first design that runs — are the same three you would be tempted by. It is a mirror held up to how you build, not only to what models can do.",
+      "title": "τ^τ-Bench: An Environment for End-To-End, Realistic Agent Construction",
+      "source": "arXiv (cs.AI)",
+      "url": "https://arxiv.org/abs/2609.04611",
+      "date": "2026-09-04",
+      "summary": "Rather than scoring an agent on a fixed task, this benchmark makes building the agent the task. A developer agent receives what a real client engagement provides: the records a business actually keeps, a client holding requirements, a production API that operations must run through, a codebase to inherit, and limits on serving cost and model choice. From that it must deliver a complete customer-service agent, scored by deploying that agent against held-out simulated users. Across 53 tasks spanning four domains, the strongest configuration, Claude Opus 5 under Claude Code, passes 23.9% of evaluation simulations, against an expert-authored reference ceiling of 82.2%. The authors characterise the failures as ones human agent developers also see: models issue shallow queries in place of deep comprehension of the records, communicate almost nothing to the client, and experiment too little with agent architecture and serving spend, shipping the first design that runs.",
+      "why_it_matters": "Most agent benchmarks measure whether a model can complete a task inside a harness someone else built. This one measures whether it can do the engagement, which is where the difficulty actually lives once models are strong. The 58-point gap between the best system and an expert is a rarer and more honest number than another leaderboard delta.",
+      "why_you_should_care": "You are building a system in which an LLM sits behind a structured interface and is asked to produce advice for one specific person. That is an engagement, not a task. The diagnosis transfers almost word for word: do not query your context store shallowly, do not assume you know what the user wanted without asking, and do not ship the first prompt that returns valid JSON.",
+      "radar_score": 0.79,
+      "domains": ["AI SYSTEMS", "HUMAN COGNITION"],
       "connections": [
-        { "to_signal": "s5", "type": "complementary" },
-        { "to_signal": "s1", "type": "ecosystem" }
+        { "to_signal": "s2", "type": "ecosystem" }
       ],
-      "suggested_action": "Next time a model transcribes something for you, ask it one follow-up: 'which part of the image did you actually read that from?' Then check whether that part is legible. You will be surprised how often it names a region it cannot have read.",
-      "landscape": { "domain": "DIGITAL HUMANITIES", "short": "VeriOCRBench", "x": 700, "y": 480, "strength": "normal" }
+      "suggested_action": "Take the last thing you built with an LLM in the loop and write down the three questions you never asked: what the data actually contained, what the user actually wanted, and what a second architecture would have cost. If you cannot answer all three from your own notes, you shipped the first design that ran.",
+      "landscape": {
+        "domain": "AI SYSTEMS",
+        "short": "τ^τ-Bench",
+        "x": 686,
+        "y": 180,
+        "strength": "strong"
+      }
     },
     {
       "id": "s4",
-      "headline": "The Model Knows Where Your Culture Is. Not Which Way It's Moving.",
-      "one_liner": "Two decades of World Values Survey data, 40 countries, four frontier models — accurate on the snapshot, systematically wrong on the trajectory",
-      "signal_type": "NOW",
-      "chain": "CULTURAL DATA → AI SYSTEMS",
-      "why_you": "You are living inside a second culture while studying a third. This paper is the first serious measurement of whether AI systems can hold a culture as something that moves rather than something that sits still.",
-      "title": "Accurate in space, unreliable in time: how LLMs represent national cultural change",
-      "source": "arXiv (cs.CY)",
-      "url": "https://arxiv.org/abs/2609.01902",
-      "date": "2026-09-01",
-      "summary": "Cultural alignment evaluation almost always treats culture as a single snapshot. This paper tests the missing dimension using more than two decades of World Values Survey data, comparing the real cultural trajectories of 40 countries on the Inglehart–Welzel cultural map against the trajectories produced by four state-of-the-art LLMs. Models generally place countries close to their most recent surveyed position — but that representation lags several years behind, captures only part of the observed magnitude of change, introduces movement where little occurred, and rarely reproduces reversals in a country's direction. The authors call the pattern temporal flattening, and argue snapshot accuracy gives an incomplete and flattering picture of cultural awareness, with consequences for evaluation, representational harm and governance.",
-      "why_it_matters": "It exposes a whole class of false confidence: being right about the present while being wrong about the trend. A model can pass every cultural benchmark currently in use and still be useless the moment you ask 'is this changing, and in which direction?'",
-      "why_you_should_care": "Two of your own domains collide here — cultural data and AI evaluation — and the failure has a shape you'll recognise from elsewhere: the model answers confidently because answering confidently is its default, not because the answer is supported.",
-      "radar_score": 0.88,
-      "domains": ["CULTURAL DATA", "AI SYSTEMS"],
+      "headline": "The Model Doesn't Know What Machine It's Running On",
+      "one_liner": "State a memory and time budget in the prompt and the generated code changes shape by itself — bounded blocking, float32, memory-mapped buffers; at a 96 MB contract, correct-and-within-budget goes from 0/5 to 4/5",
+      "signal_type": "LEARN",
+      "chain": "AI SYSTEMS → DIGITAL HUMANITIES",
+      "why_you": "It gives a name to something you have probably already felt: a plan that is technically right and institutionally impossible. The name is substrate blindness, and once you have it you will see it everywhere in cultural-sector work.",
+      "title": "Substrate-Aware AI Agents: Execution Context as a First-Class Input",
+      "source": "arXiv (cs.AI)",
+      "url": "https://arxiv.org/abs/2609.05232",
+      "date": "2026-09-04",
+      "summary": "The paper names a failure it calls substrate blindness: agents select actions in environments whose memory, execution-time, runtime, compute and operational constraints determine what counts as a suitable plan, yet those constraints are absent from the agent's planning state. It tests the proposition on numerical code generation, where implementation choices and their operational consequences are directly observable. Three frontier configurations generate code for a high-dimensional pairwise Euclidean-distance task either from the task alone or with a 128 MB RAM and 10.0 s wall-time contract. Contract disclosure reduced measured peak process memory in 13 of 14 executable index-aligned comparisons and reduced mean wall time in all three cohorts, making execution up to 3.1x faster. The changes were structural rather than cosmetic: bounded blocking, float32 retention, upper-triangle traversal, and in-place or memory-mapped buffers. At a tighter 96 MB contract, independently sampled contract-disclosed cohorts achieved correct-and-within-budget outcomes of 4/5, 5/5 and 3/5, against task-only outcomes of 0/5, 1/5 and 0/5.",
+      "why_it_matters": "The interesting claim is not that constraints help, which is obvious. It is that the constraint had to be stated in order to exist at all. Nothing about a distance-matrix task tells a model it will run on a laptop with 8 GB free, so it writes the version that assumes infinite memory, and that version is correct and unusable. Constraints are not limits on a plan; they are inputs to it, and withholding them is a reliable way to get the wrong answer.",
+      "why_you_should_care": "This generalises past code and it is the most transferable idea on today's radar. A museum with two servers, a course with a three-week deadline, your own MacBook on a train: each is a substrate, and a plan that ignores it is substrate-blind. You will be asked to propose computational work to people in cultural institutions. Knowing to ask what this actually has to run on, and who maintains it, before proposing anything is the difference between a plan and a proposal.",
+      "radar_score": 0.82,
+      "domains": ["AI SYSTEMS"],
       "connections": [
-        { "to_signal": "s2", "type": "complementary" },
-        { "to_signal": "s5", "type": "ecosystem" }
+        { "to_signal": "s1", "type": "contrast" },
+        { "to_signal": "s6", "type": "complementary" }
       ],
-      "suggested_action": "Look up your own country and Italy on the Inglehart–Welzel map. Note where each sits. Then ask a model where each was twenty years ago — and check the answer against the survey. That gap is the paper in one experiment.",
-      "landscape": { "domain": "CULTURAL DATA", "short": "Temporal Flattening", "x": 232, "y": 505, "strength": "strong" }
+      "suggested_action": "For one week, add one line to every prompt where you ask a model for code or a plan: the machine, the memory ceiling, the time budget, and who has to maintain the result. Compare what comes back against what you used to get. That difference is the size of your own substrate blindness.",
+      "landscape": {
+        "domain": "AI SYSTEMS",
+        "short": "Substrate blindness",
+        "x": 718,
+        "y": 110,
+        "strength": "moderate"
+      }
     },
     {
       "id": "s5",
-      "headline": "Confidence Is Not a Reason",
-      "one_liner": "A four-tier reliance certificate grading one recommendation at a time — unstable, context-dependent, locally supported, broadly supported — and it turns out to be measuring something confidence scores don't",
+      "headline": "Knowledge as Mental Programs, Not Sentences",
+      "one_liner": "A model that represents hypotheses as programs mixing natural language with source code reproduces human anchoring and garden-pathing effects that both pure LLMs and classic Bayesian models miss",
       "signal_type": "LEARN",
-      "chain": "AI SYSTEMS → HUMAN COGNITION",
-      "why_you": "This is the concept to carry this week. You already force your coach to emit a confidence number. This paper is the argument that the number is not telling you what you think it is.",
-      "title": "Epistemic Warrant for LLM Recommendations: Characterizing the Basis for Reliance When Ground Truth Is Unavailable",
-      "source": "arXiv (cs.AI)",
-      "url": "https://arxiv.org/abs/2609.04127",
-      "date": "2026-09-03",
-      "summary": "Most evaluation asks whether a model is reliable, calibrated or robust in general, or studies whether users trust it. This paper asks something narrower: what justifies relying on this particular recommendation, right now, when there is no ground truth to check it against. Borrowing epistemic warrant from epistemology, it defines a decision-level construct measuring how stable a model's preference is and over what scope that preference holds. It operationalises this as a four-tier reliance certificate for pairwise recommendations — unstable, context-dependent, locally supported, broadly supported — validated through known-groups tests that recover expert-prespecified orderings, and through systematic alignment with independent crowd-worker consensus. The key claim: warrant carries information distinct from verbalised confidence, and that difference is not explained by decision difficulty. A model can be confident and unstable at the same time.",
-      "why_it_matters": "It moves the question from 'how sure is the model' to 'how far can this answer be pushed before it breaks' — a property of the answer and its context, not a feeling the model reports about itself.",
-      "why_you_should_care": "Every coaching suggestion you generate carries a confidence field. If warrant and confidence are genuinely different measurements, your UI is showing the user the weaker of the two. The cheap version of the test — rephrase the question slightly and see whether the answer flips — is something you can run today against your own coach.",
-      "radar_score": 0.90,
-      "domains": ["AI SYSTEMS", "HUMAN COGNITION"],
+      "chain": "HUMAN COGNITION → AI SYSTEMS",
+      "why_you": "It is the rare cognitive-science paper whose claim you can test on yourself in an afternoon, and it hands you a vocabulary — hypothesis space, program-like representation, approximate Bayesian update — for something you already do when you debug.",
+      "title": "Induction and Inquiry via Probabilistic Reasoning over Language and Code",
+      "source": "arXiv (cs.CL)",
+      "url": "https://arxiv.org/abs/2609.01815",
+      "date": "2026-09-01",
+      "summary": "The authors ask how humans grow and maintain abstract knowledge from the sparse, streaming, noisy data of experience, and argue that any computational account must satisfy three desiderata: it must be data- and compute-efficient, it must capture gradations of uncertainty to support intelligent inquiry and information gathering, and it must be flexible enough to represent the endless range of concepts people can learn. Their model encodes symbolic knowledge as mental programs that combine natural language with source code, and infers those programs sequentially using LLM-guided Bayesian learning algorithms. Across a range of behavioural studies it reproduces quantitative signatures of human inductive learning and active inquiry, including anchoring, garden-pathing and related effects. Pure LLMs and classic Bayesian models either fail at the underlying task, fail to reproduce human behaviour, or succeed only at exorbitant computational cost. The reading offered is that humans hold many hypotheses spanning language-like and program-like representations, revise them to approximate Bayesian updates, and use a bottom-up neural mechanism to keep inference tractable.",
+      "why_it_matters": "The hybrid is the point. Language alone is too vague to execute; code alone is too rigid to cover what people actually think about. Putting both in one representation, letting a neural system propose updates while a probabilistic framework scores them, produces human-like behaviour from components that are not individually human-like. It is also one of the few live answers to the question of what a concept is, computationally.",
+      "why_you_should_care": "Two things. Bayesian thinking is on your curiosity list marked not-started; this is a paper where Bayes does visible work inside a model of learning rather than sitting in a textbook chapter. Second, and more useful tomorrow: when you are stuck debugging you are already running this loop. You hold several hypotheses about the bug, each a mix of a vague story and a concrete mental program, and each test updates them. Knowing that is a formal process makes it much easier to notice when you have stopped updating and started defending one hypothesis.",
+      "radar_score": 0.81,
+      "domains": ["HUMAN COGNITION", "AI SYSTEMS"],
       "connections": [
-        { "to_signal": "s1", "type": "complementary" },
-        { "to_signal": "s3", "type": "complementary" }
+        { "to_signal": "s4", "type": "complementary" }
       ],
-      "suggested_action": "Take one question your coach answers confidently. Ask it five times with small variations in phrasing. Count the flips. That count is a rough warrant tier — and if it's above zero, your confidence number is lying to you by omission.",
-      "landscape": { "domain": "AI SYSTEMS", "short": "Epistemic Warrant", "x": 700, "y": 140, "strength": "strong" }
+      "suggested_action": "Next time you are stuck on a bug for more than twenty minutes, stop and write out every hypothesis you are currently holding, one line each. If you can only write one, that is the garden path — go find a second before you test anything.",
+      "landscape": {
+        "domain": "HUMAN COGNITION",
+        "short": "Mental programs",
+        "x": 270,
+        "y": 240,
+        "strength": "strong"
+      }
     },
     {
       "id": "s6",
-      "headline": "Three Days to Tell Europe What AI Should Do With Culture",
-      "one_liner": "The Commission's call for evidence on an AI strategy for the cultural and creative sectors closes 11 September — open to anyone, in every official EU language",
-      "signal_type": "OPPORTUNITY",
-      "chain": "DIGITAL HUMANITIES → CULTURAL DATA",
-      "why_you": "You are an EU resident, a data science student, and a former art student with a stake in cultural heritage. This is a consultation that explicitly wants exactly that combination — and almost no students ever reply to these.",
-      "title": "Call for evidence: Artificial intelligence strategy for the cultural and creative sectors",
-      "source": "European Commission — Have Your Say",
-      "url": "https://ec.europa.eu/info/law/better-regulation/have-your-say/initiatives/18592-Artificial-intelligence-strategy-for-the-cultural-and-creative-sectors_en",
-      "date": "2026-07-29",
-      "summary": "The European Commission is collecting evidence for a dedicated AI strategy for the cultural and creative sectors, due in the first half of 2027, under the Culture Compass for Europe. The call asks how AI can complement rather than replace human creativity, widen access to culture and knowledge, and support a fair and competitive European creative economy. Three pillars are already set: innovation and competitiveness, fair business models and ethical use, and capacity building for the digital transition. It sits alongside a Common European data space for cultural heritage intended to make over 30 million licensed digital cultural objects available for AI training by 2030. The consultation is open to anyone — artists, creators, researchers, public authorities and members of the public — in all EU languages, and closes 11 September 2026.",
-      "why_it_matters": "Whatever gets written into this strategy will shape what European cultural institutions are allowed and funded to do with AI for the next decade — including the archives and museums you'll be asking for data.",
-      "why_you_should_care": "This is the rare policy moment where being a first-year undergraduate is not a disqualification: consultations count individual responses, and a concrete cross-cultural argument from someone actually living between two cultures is more useful than another position paper from a collecting society.",
-      "radar_score": 0.85,
+      "headline": "Reading a Temple the Way You'd Read a Sentence",
+      "one_liner": "A $225,000 NEH grant puts an architectural historian and an NLP researcher on 180,000 excavated artefacts from the Athenian Agora, asking a model to induce the shape grammar of classical buildings instead of hand-coding it",
+      "signal_type": "NOW",
+      "chain": "CULTURAL DATA → DIGITAL HUMANITIES",
+      "why_you": "It is the closest thing to a worked example of your own trajectory: an art-trained person and a technical person splitting the difference, on Mediterranean material, with a real funding line behind it and a named archive you could visit.",
+      "title": "New AI Models Could Create More Accurate Visualizations of Classical Architecture",
+      "source": "Georgia Tech Research News",
+      "url": "https://news.research.gatech.edu/2026/09/03/new-ai-models-could-create-more-accurate-visualizations-classical-architecture",
+      "date": "2026-09-03",
+      "summary": "Kartik Goyal of the School of Interactive Computing and Myrsini Mamoli, an architectural historian jointly in the School of Architecture and the School of History and Sociology, received a $225,000 National Endowment for the Humanities grant to build models that help reconstruct classical Greek structures. Mamoli works at the Ancient Agora in Athens, where more than 180,000 artefacts have been uncovered and every discovery since 1933 has a digitised record. Her earlier work computed shape grammars — rule-based recursive visual systems, one per architectural style — by hand, in order to generate 2D reconstructions. The collaboration asks whether a model can discover those rules from the data at scale and then apply them recursively to propose reconstructions. Goyal has used comparable methods to trace the printing origins of early modern English books. Both are explicit about the risk: Goyal notes that running such models blindly risks incorporating undetected bias, and Mamoli frames AI as assisting scholarly work rather than replacing it.",
+      "why_it_matters": "The substantive move is inverting who writes the grammar. A shape grammar is normally authored by a scholar, which means it carries that scholar's assumptions about which features matter. Asking a model to induce the grammar from 180,000 records makes the assumptions visible and arguable: you can inspect the rules it found and disagree with them, which you cannot do with a person's intuition.",
+      "why_you_should_care": "Three reasons this lands on you specifically. It has the same shape as the Venice problem — a city with overwhelming archival density and nowhere near enough people to read it. It is a template for the interdisciplinary pairing you keep describing, where the historian holds the question and the ML person holds the method and neither defers. And note the funder: NEH, not NSF. Digital humanities money in this area comes from humanities councils, which means the proposal has to be legible as a humanities question first. Worth knowing well before you write one.",
+      "radar_score": 0.8,
       "domains": ["DIGITAL HUMANITIES", "CULTURAL DATA"],
       "connections": [
-        { "to_signal": "s2", "type": "ecosystem" },
-        { "to_signal": "s4", "type": "ecosystem" }
+        { "to_signal": "s4", "type": "complementary" },
+        { "to_signal": "s1", "type": "contrast" }
       ],
-      "suggested_action": "Before 11 September, write 300 words from your own position: what AI should be allowed to do with digitised cultural material, and who should get to decide. Submit it, then keep the copy — in two years it's the opening paragraph of a research statement.",
-      "landscape": { "domain": "DIGITAL HUMANITIES", "short": "EU Consultation", "x": 660, "y": 545, "strength": "normal" }
+      "suggested_action": "Read the piece once for the method and once for the shape of the collaboration. Then write down, in two sentences, what the Venetian equivalent of the Agora record set is: which archive, which 180,000 items, which question nobody has the staff to ask. If you cannot name the archive, that is the actual first step.",
+      "landscape": {
+        "domain": "DIGITAL HUMANITIES",
+        "short": "Induced shape grammar",
+        "x": 680,
+        "y": 510,
+        "strength": "strong"
+      }
+    },
+    {
+      "id": "s7",
+      "headline": "A Ministry Ships Cultural Data With the Connector Attached",
+      "one_liner": "Korea's culture ministry will release five AI-ready cultural datasets — traditional music, policy QA, tourism, 3D heritage assets and patterns — and for the first time publish MCP linkage alongside them, so models connect rather than humans download",
+      "signal_type": "OPPORTUNITY",
+      "chain": "AI SYSTEMS → CULTURAL DATA",
+      "why_you": "It is a small administrative decision that quietly changes what open cultural data means, and you are building things that consume exactly this kind of interface while living in a city made of the stuff.",
+      "title": "Culture Ministry to Release Five Types of AI and High-value Public Data in the Cultural Sector for the First Time",
+      "source": "The Asia Business Daily",
+      "url": "https://www.asiae.co.kr/en/article/government-department/2026090306472251666",
+      "date": "2026-09-03",
+      "summary": "On 3 September Korea's Ministry of Culture, Sports and Tourism announced it will open five high-value cultural datasets by December as national key data: traditional Korean music audio and images with expert annotation on genre, instrument, rhythm and expressive technique, from the National Gugak Center; policy QA datasets built from domestic and international government documents, from the National Library of Sejong; multilingual nationwide tourism information and regional video content, from the Korea Tourism Organization; and 3D cultural assets, Korean attire and traditional pattern data in AI-optimised formats, from the Korea Cultural Information Service. The last of these adds expert review of cultural and historical reliability and structures relationships between resources as an ontology. Five further datasets follow in 2026 and seven in 2027. The operationally new part is the delivery: the release will ship Model Context Protocol linkage information alongside the data, the ministry's first use of MCP, explicitly intended to move the system from public data people have to find and use toward cultural data easily connected and utilised by AI.",
+      "why_it_matters": "Two details are the actual news. First, the ontology layer: relationships and semantic information between cultural resources are modelled explicitly, so a system can learn that a pattern belongs to a period and a garment to a class rather than inferring it from filenames. Second, the MCP linkage: the unit of release stops being a file and becomes an addressable tool. That is a different theory of what open means for cultural data, and if it works it will be copied.",
+      "why_you_should_care": "You already live inside MCP-based tooling and you are about to spend several years in a city whose entire economy is cultural data. Watching a national ministry decide that the correct release format is a connector rather than a ZIP file is the early signal for how European institutions will do it — the Commission's common European data space for cultural heritage is aiming at tens of millions of licensed digital objects available for AI training by 2030. Whoever builds the interface layer for that, in either language, is doing work you would want to be able to do.",
+      "radar_score": 0.74,
+      "domains": ["CULTURAL DATA", "AI SYSTEMS"],
+      "connections": [
+        { "to_signal": "s1", "type": "complementary" }
+      ],
+      "suggested_action": "Don't write about this, wire something. Find the smallest cultural dataset you can with a public API and expose three tools over MCP: search by period, fetch one record, list related records. Twenty minutes of plumbing, and you will have felt the difference between data you download and data you query.",
+      "landscape": {
+        "domain": "CULTURAL DATA",
+        "short": "MCP cultural data",
+        "x": 336,
+        "y": 468,
+        "strength": "moderate"
+      }
     }
   ],
   "pattern": {
     "label": "PATTERN EMERGING",
-    "statement": "Today's signals are not about accuracy. They are about the fact that a model's default setting is to answer. A document benchmark finds that fifteen leading multimodal systems will confidently read an archive image and answer a question the image cannot support. A cultural-values study finds four frontier models placing countries correctly on the map while being quietly wrong about the direction each is travelling. A tutoring paper has to invent a simulated student because nothing in the loop can otherwise tell whether the advice landed. An epistemology paper has to invent a warrant certificate because a model's stated confidence turns out to be independent of whether the answer survives a small change in phrasing. And the artists in the Goethe-Institut workshops only discovered what commercial systems were missing after they trained a model of their own to compare against. Four fields, one finding: the failure is not that models are wrong, it's that they are compliant. Which means the fix is not better answers — it's building the test the answer has to survive.",
-    "contributing": ["s1", "s2", "s3", "s4", "s5"]
+    "statement": "Today's signals keep arriving at the same shape from different directions: the thing that looks like the system working is not the thing that is working. A land-record benchmark finds six multimodal models returning zero correct answers across nearly forty per cent of question categories, and the only instrument that reveals it is a baseline too stupid to be wrong — guess the average. A memory study finds an agent can keep its entire store and lose thirteen points of accuracy with no error raised, because the loss happened invisibly during compression. A construction benchmark finds the best system passing a quarter of what an expert passes, failing not at the task but at the engagement: too shallow with the records, too quiet with the client, too quick to ship. A code-generation paper finds that simply telling the model how much memory it has makes it write a different program, which means the constraint was always there and had simply been left out of the planning state. Four fields, one structure: performance is being produced by something other than capability. Which means the useful question is never how good is it, but what is it standing on, and what happens when that moves.",
+    "contributing": ["s1", "s2", "s3", "s4", "s7"]
   },
   "open_question": {
     "label": "A QUESTION WORTH CARRYING",
-    "text": "If a system's instinct is always to answer, then what should it cost it to answer — and who gets to set that price: the model, the engineer, or the person who has to live with being wrong?"
+    "text": "If a model's score can stay high while the capability underneath is absent, then what exactly are you measuring when you compare two systems — and how long do you want to keep calling that evaluation?"
   },
   "editorial": {
     "world": [
       {
-        "headline": "AI Tutors Have Someone to Practise On",
-        "sub": "StudentSim trains one simulator per student, scored on fidelity and teachability separately — and as an RL reward source it lifts tutor accuracy from 75.7% to 90.5%",
-        "why": "It splits 'sounds like you' from 'can be moved by instruction' — two numbers, and only the corner where both are high is useful",
-        "source_url": "https://arxiv.org/abs/2609.01591",
-        "source_name": "arXiv (Microsoft Research & UIUC)"
+        "headline": "A Number System No Model Can Read",
+        "sub": "KhatianDoc builds 1,634 human-verified questions over real Bangladeshi land titles: six multimodal LLMs score zero on 39.3% of categories, and on arithmetic every model that answers loses to guessing the average",
+        "why": "It separates a weak capability from an absent one, and shows the only instrument that can tell them apart is a baseline nobody would bother to submit",
+        "source_url": "https://arxiv.org/abs/2609.03597",
+        "source_name": "arXiv (cs.CL)"
       },
       {
-        "headline": "Right About Today, Wrong About the Direction",
-        "sub": "Twenty years of World Values Survey data across 40 countries: four frontier models place cultures accurately but lag years behind and miss every reversal",
-        "why": "It names a failure that passes every existing cultural benchmark — being correct on the snapshot while being wrong on the trend",
-        "source_url": "https://arxiv.org/abs/2609.01902",
-        "source_name": "arXiv (cs.CY)"
+        "headline": "An Agent Can Keep Its Memory and Still Forget",
+        "sub": "Across 48 histories and four storage formats, fixed-schema graphs shift by 0.0004 after a model swap while compressed notes swing up to 13 points — and repair without the raw source fails every single time",
+        "why": "It makes compression a deferred cost rather than free storage, and it names the exact line your own coach's persistence layer needs",
+        "source_url": "https://arxiv.org/abs/2609.05339",
+        "source_name": "arXiv (cs.AI)"
       },
       {
-        "headline": "Europe Is Asking What AI May Do With Culture",
-        "sub": "The Commission's call for evidence closes 11 September — open to any individual, in every EU language, feeding a strategy due in 2027",
-        "why": "Whatever lands in that strategy governs what European archives and museums can do with AI for a decade — including the ones you'll want data from",
-        "source_url": "https://ec.europa.eu/info/law/better-regulation/have-your-say/initiatives/18592-Artificial-intelligence-strategy-for-the-cultural-and-creative-sectors_en",
-        "source_name": "European Commission — Have Your Say"
+        "headline": "Reading a Temple Like a Sentence",
+        "sub": "A $225,000 NEH grant has an architectural historian and an NLP researcher inducing the shape grammar of classical buildings from 180,000 excavated Agora records, instead of hand-authoring the rules",
+        "why": "Inverting who writes the grammar turns a scholar's invisible assumptions into something you can inspect and argue with",
+        "source_url": "https://news.research.gatech.edu/2026/09/03/new-ai-models-could-create-more-accurate-visualizations-classical-architecture",
+        "source_name": "Georgia Tech Research News"
       }
     ],
     "think": [
       {
-        "concept": "Temporal Flattening",
-        "question": "Can a system be right about where a culture is and still wrong about where it's going?",
-        "explain": "Yes, and systematically. Measured against two decades of survey data, models place countries near their latest recorded position but lag several years, understate the size of real change, invent movement where there was none, and almost never reproduce a reversal in direction. Snapshot accuracy and trajectory accuracy are different capabilities, and only the first is currently evaluated.",
-        "why": "It generalises well beyond culture: anywhere a model reports a state but not a rate, you are being handed a photograph and reading it as a film.",
-        "source_url": "https://arxiv.org/abs/2609.01902"
+        "concept": "Substrate Blindness",
+        "question": "Can a plan be correct and still be impossible?",
+        "explain": "Yes, routinely. An agent asked to compute a large distance matrix with no memory or time budget writes the version that assumes infinite memory: correct, and it will not run. Disclosing a 128 MB and 10 second contract changed the generated code structurally — bounded blocking, float32, memory-mapped buffers — and moved correct-and-within-budget from 0/5 to 4/5 at a tighter 96 MB. The constraint was never a limit on the plan; it was an input to it.",
+        "why": "It generalises past code. A museum with two servers, a three-week deadline, a laptop on a train: every one is a substrate, and a proposal that ignores the substrate is a proposal that will not survive contact with it.",
+        "source_url": "https://arxiv.org/abs/2609.05232"
       },
       {
-        "concept": "Fidelity vs. Responsiveness",
-        "question": "What's the difference between a model that sounds like you and one that can be taught?",
-        "explain": "Behavioral fidelity measures whether a simulator reproduces what you'd do unaided — including your specific mistakes. Guidance responsiveness measures whether, after reading an explanation, it moves toward the target. High fidelity with low responsiveness replays your errors forever; high responsiveness with low fidelity is obedient but starts from the wrong person. They are separate axes and can't be traded against each other.",
-        "why": "It's the cleanest available test for any personalisation claim, including your own coach's: does it know you, and can it change you? Two questions, never one.",
-        "source_url": "https://arxiv.org/abs/2609.01591"
+        "concept": "The Stupid Baseline",
+        "question": "How do you tell a weak capability from an absent one?",
+        "explain": "You run a control that cannot be right for the right reasons: always predict the mean, always predict the most frequent label, always return the first row. In KhatianDoc's arithmetic task, every model that emitted a number scored below the constant-mean baseline, and exact- and near-match scores coincided — the outputs were decorrelated from the answer, not approximately correct. That coincidence is the signature of absence rather than weakness.",
+        "why": "Because averages hide it. A benchmark reports one number across categories where the model has some competence and categories where it has none, and the zero categories are invisible in the total. A baseline you would be embarrassed to submit is the cheapest instrument that makes them visible.",
+        "source_url": "https://arxiv.org/abs/2609.03597"
       }
     ],
     "look": {
-      "subject": "The Map That Made Culture Measurable",
+      "subject": "Ninety Years of Dirt, Digitised",
       "look_for": [
-        "Two axes only — survival versus self-expression, traditional versus secular-rational — and forty countries reduced to positions on them",
-        "How tightly the countries cluster by region, and what that clustering makes invisible about the spread inside any one country",
-        "Where the arrows would go: this is a static plot of a moving thing, and the paper's whole argument is that the arrows are missing"
+        "That the excavation has run continuously since 1933 — this is a dataset accumulated by an institution, not by a project, which is precisely why it is dense enough to induce rules from",
+        "How little survives vertically: foundations and column drums. Every reconstruction anyone argues about is built on this much physical evidence",
+        "What the photograph leaves out — 180,000 catalogued artefacts exist somewhere off-frame, and that catalogue, not the ruins, is what the models actually read"
       ],
-      "visit_url": "https://en.wikipedia.org/wiki/Inglehart%E2%80%93Welzel_cultural_map_of_the_world",
-      "visit_name": "Inglehart–Welzel cultural map of the world",
-      "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6a/Inglehart_Values_Map.svg/960px-Inglehart_Values_Map.svg.png"
+      "visit_url": "https://en.wikipedia.org/wiki/Ancient_Agora_of_Athens",
+      "visit_name": "Ancient Agora of Athens",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Agora_-_Ath%C3%A8nes_%28GRA1%29_-_2022-03-26_-_97.jpg/960px-Agora_-_Ath%C3%A8nes_%28GRA1%29_-_2022-03-26_-_97.jpg"
     },
     "discover": {
-      "name": "Lev Manovich",
+      "name": "Melanie Mitchell",
       "roles": [
-        "Distinguished Professor, CUNY Graduate Center",
-        "Founder and director, Cultural Analytics Lab"
+        "Professor, Santa Fe Institute",
+        "Author, Artificial Intelligence: A Guide for Thinking Humans"
       ],
-      "desc": "An artist, author and theorist of digital culture who helped establish four fields in sequence: new media studies, software studies, cultural analytics, and AI aesthetics. His central move was to insist that culture at scale — a million manga pages, a city's worth of photographs, a century of film frames — is a dataset you can actually look at, and that looking at it tells you things close reading cannot. His current work is on generative media, AI culture and digital art.",
-      "why": "He is the person who made today's cultural-values paper possible in principle. Putting forty countries on two axes and arguing that they should be represented as trajectories rather than points is the direct descendant of the tradition he started. He's also a working answer to a question you carry: it is possible to move from art into computation without surrendering either one.",
-      "tags": ["Cultural Analytics", "AI Aesthetics", "Digital Culture", "Data-Driven Humanities"],
-      "link_url": "https://en.wikipedia.org/wiki/Lev_Manovich",
-      "portrait_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/93/Lev_Manovich_%E2%80%94_How_to_analyze_culture_using_social_networks.jpg/500px-Lev_Manovich_%E2%80%94_How_to_analyze_culture_using_social_networks.jpg"
+      "desc": "A computer scientist who took her PhD under Douglas Hofstadter and John Holland, and whose career has run through genetic algorithms, cellular automata, complex systems and analogical reasoning. For the past several years she has been doing something less fashionable than building models: insisting on the difference between a system that performs a task and a system that understands one. Her current work is on abstraction and analogy as the unsolved core of machine intelligence, and on how easily benchmark numbers conceal the absence of the thing they appear to measure.",
+      "why": "She has been making today's argument longer than anyone. KhatianDoc's distinction between a performance gap and the absence of a capability is, in her vocabulary, the difference between pattern matching and abstraction — and she has argued for years that the field keeps mistaking one for the other because the benchmarks reward it. She is also a working model of a career built precisely at the seam between cognitive science and AI, which is the seam you are trying to stand on.",
+      "tags": [
+        "Abstraction",
+        "Analogy",
+        "Complex Systems",
+        "AI Evaluation"
+      ],
+      "link_url": "https://en.wikipedia.org/wiki/Melanie_Mitchell",
+      "portrait_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/SD_2025_-_Melanie_Mitchell_01_%28cropped%29.jpg/500px-SD_2025_-_Melanie_Mitchell_01_%28cropped%29.jpg"
     },
     "explore": {
-      "question": "If the European Commission asked you — not your university, you — what AI should be allowed to do with culture, what would you actually say?",
-      "start_url": "https://ec.europa.eu/info/law/better-regulation/have-your-say/initiatives/18592-Artificial-intelligence-strategy-for-the-cultural-and-creative-sectors_en",
-      "start_name": "Have Your Say — AI strategy for cultural and creative sectors",
+      "question": "What is the dumbest possible baseline for the thing you most trust a model to do — and have you ever actually run it?",
+      "start_url": "https://arxiv.org/abs/2609.03597",
+      "start_name": "KhatianDoc — the benchmark that used a constant-mean guess as a control",
       "trail": [
         {
-          "title": "Read the three pillars before you write anything",
-          "hint": "Innovation, fair business models and ethical use, capacity building. Your answer lands harder if it's addressed to a pillar rather than floating free."
+          "title": "Pick one task you would defend a model on",
+          "hint": "Translation, table extraction, summarising a paper you have not read. One task, not a benchmark suite — you need to be able to check the answers yourself."
         },
         {
-          "title": "Pick the one thing only you can testify to",
-          "hint": "Not copyright theory — everyone is writing that. You are a Chinese art-track student in Venice using AI daily. What breaks, concretely, when a model meets your material?"
+          "title": "Write the baseline you would be embarrassed to submit",
+          "hint": "Always predict the mean. Always predict the most frequent label. Always return the first row. Ten lines, no intelligence in them at all."
         },
         {
-          "title": "Write 300 words, in English, plain and specific",
-          "hint": "One observation, one claim, one recommendation. Consultation responses are read for evidence, not for eloquence."
+          "title": "Run both on twenty cases you can verify",
+          "hint": "Score per category, never overall. The average is exactly where absence hides, and a single number will tell you nothing."
         },
         {
-          "title": "Submit before 11 September and keep your own copy",
-          "hint": "The deadline is real and it's three days out. The copy is the part that compounds — it's the seed of a research statement later."
+          "title": "Find the category where the baseline wins",
+          "hint": "In KhatianDoc there were five. When you find yours, you have located a missing capability — and no amount of better prompting will fix a missing capability."
         }
       ],
-      "why": "This is the cheapest possible way to find out whether you have a position. Most people discover they don't only when asked to write it down — and the European Commission is asking, in your name, in your city, this week."
+      "why": "It takes an afternoon and permanently changes how you read an evaluation number. Most people never run the baseline because the result might be unwelcome; the ones who do stop being impressed by averages."
     },
     "make": {
-      "tool": "A Stability Probe in 25 Lines",
-      "does": "A tiny Python function that takes one question, sends it five times with small variations in phrasing, and counts how many times the substantive answer changes. It returns a rough warrant tier: zero flips is locally supported, one or two is context-dependent, three or more means the model never had an answer, it had a mood.",
-      "why": "You're building a coaching layer that attaches a confidence number to every suggestion. Writing the cheap version of epistemic warrant yourself is the fastest way to feel the difference between a model being sure and a model being stable — and to see which one your UI is actually showing.",
-      "try": "Start with ask(question) -> answer. Then add paraphrase(question, n=5) using a fixed set of rewording templates. Then compare: normalise whitespace and lower-case, count distinct answers. Run it on one question you believe the answer to, then on one you don't — and notice that the confidence number barely moves between them.",
-      "link_url": "https://arxiv.org/abs/2609.04127"
+      "tool": "A Baseline You'd Be Embarrassed To Submit",
+      "does": "One Python function that takes your model's predictions and the true labels, computes three stupid baselines — constant mean, most frequent label, first row — and prints a per-category table showing which ones your model actually beats and by how much.",
+      "why": "Everything on today's radar comes back to the same missing instrument. KhatianDoc only discovered that five categories had zero capability because someone thought to include a constant-mean control. You will never find your own version of that by reading averages.",
+      "try": "Start with three lines: baseline_majority(y_train), baseline_mean(y_train), and your model's y_pred. Score all three. Then split by category instead of scoring overall — that is the step that actually finds anything. Run it on whichever dataset is nearest to hand, including one you built yourself.",
+      "link_url": "https://arxiv.org/abs/2609.03597"
     }
   }
 };
